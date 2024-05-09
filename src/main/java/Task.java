@@ -23,7 +23,7 @@ public class Task {
         this.ID=ID;
         this.Title=Title;
         this.Description=Description;
-        this.Status= Status;
+        this.Status="Uncompleted";
     }
 
     public int getID() {
