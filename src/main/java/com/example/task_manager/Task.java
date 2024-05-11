@@ -1,9 +1,6 @@
 package com.example.task_manager;
-import java.io.ObjectInputFilter;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
-import java.time.LocalTime;
-import java.time.format.DateTimeFormatter;
 
 
 public class Task {
@@ -12,8 +9,8 @@ public class Task {
     private String Description;
     private String Status;
     private String EstimatedTime;
-    private int Priority;
-    private LocalDateTime Duedate;
+    private String Priority;
+    private LocalDate Duedate;
     private LocalDateTime CreationDate;
     private LocalDateTime CompletionDate;
     private String Assignee;
@@ -24,6 +21,15 @@ public class Task {
         this.Title=Title;
         this.Description=Description;
         this.Status="Uncompleted";
+    }
+
+    public Task(String Title, String description,String priority, String status, LocalDate dueDate) {
+        this.Title=Title;
+        this.Description=description;
+        this.Status=status;
+        this.Priority=priority;
+        this.Duedate=dueDate;
+
     }
 
     public int getID() {
@@ -66,19 +72,19 @@ public class Task {
         EstimatedTime = estimatedTime;
     }
 
-    public int getPriority() {
+    public String getPriority() {
         return Priority;
     }
 
-    public void setPriority(int priority) {
+    public void setPriority(String priority) {
         Priority = priority;
     }
 
-    public LocalDateTime getDuedate() {
+    public LocalDate getDuedate() {
         return Duedate;
     }
 
-    public void setDuedate(LocalDateTime duedate) {
+    public void setDuedate(LocalDate duedate) {
         Duedate = duedate;
     }
 

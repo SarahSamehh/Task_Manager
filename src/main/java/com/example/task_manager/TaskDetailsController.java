@@ -5,6 +5,8 @@ import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
 
+import java.time.LocalDate;
+
 public class TaskDetailsController {
 
     @FXML
@@ -52,6 +54,16 @@ public class TaskDetailsController {
     }
 
     // process the data..
+    public Task getTask() {
+        String title = titleText.getText(); // Using titleText for the title
+        String description = detailsText.getText(); // Using detailsText for the description
+        String priority = PriorityComboBox.getValue(); // Using PriorityComboBox for the priority
+        String status = StausComboBox.getValue(); // Using StausComboBox for the status
+        LocalDate dueDate = deadlinePicker.getValue(); // Using deadlinePicker for the due date
+
+        // Create and return a new Task object
+        return new Task(title, description, priority, status, dueDate);
+    }
 
 
 

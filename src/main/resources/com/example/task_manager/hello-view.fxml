@@ -2,16 +2,49 @@
 
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.text.Font?>
 
+<?import javafx.scene.control.cell.PropertyValueFactory?>
 <Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="627.0" prefWidth="795.0" style="-fx-background-color: white;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.task_manager.HelloController">
+
    <children>
       <Label alignment="CENTER" layoutX="21.0" layoutY="14.0" prefHeight="40.0" prefWidth="265.0" text="Task Manager" textAlignment="CENTER" textOverrun="CENTER_ELLIPSIS">
          <font>
             <Font name="System Italic" size="35.0" />
          </font>
       </Label>
+      <TableView fx:id="taskTable" layoutX="21.0" layoutY="100.0" prefHeight="400.0" prefWidth="800.0">
+         <columns>
+            <TableColumn fx:id="titleColumn" text="Title" prefWidth="200.0">
+               <cellValueFactory>
+                  <PropertyValueFactory property="title" />
+               </cellValueFactory>
+            </TableColumn>
+            <TableColumn fx:id="descriptionColumn" text="Description" prefWidth="250.0">
+               <cellValueFactory>
+                  <PropertyValueFactory property="description" />
+               </cellValueFactory>
+            </TableColumn>
+            <TableColumn fx:id="priorityColumn" text="Priority" prefWidth="100.0">
+               <cellValueFactory>
+                  <PropertyValueFactory property="priority" />
+               </cellValueFactory>
+            </TableColumn>
+            <TableColumn fx:id="statusColumn" text="Status" prefWidth="100.0">
+               <cellValueFactory>
+                  <PropertyValueFactory property="status" />
+               </cellValueFactory>
+            </TableColumn>
+            <TableColumn fx:id="dueDateColumn" text="Due Date" prefWidth="150.0">
+               <cellValueFactory>
+                  <PropertyValueFactory property="dueDate" />
+               </cellValueFactory>
+            </TableColumn>
+         </columns>
+      </TableView>
       <Button fx:id="addTaskButton" layoutX="43.0" layoutY="562.0" mnemonicParsing="false" onAction="#addButtonAction" prefHeight="40.0" prefWidth="125.0" style="-fx-background-color: purple;" text="Add" textFill="WHITE">
          <font>
             <Font size="18.0" />
@@ -39,3 +72,4 @@
       </Button>
    </children>
 </Pane>
+
