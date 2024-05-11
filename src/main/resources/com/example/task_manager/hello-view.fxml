@@ -5,34 +5,34 @@
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.text.Font?>
 
-<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="627.0" prefWidth="795.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1">
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="627.0" prefWidth="795.0" style="-fx-background-color: white;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.task_manager.HelloController">
    <children>
-      <Label alignment="CENTER" layoutX="21.0" layoutY="14.0" prefHeight="40.0" prefWidth="265.0" style="-fx-background-color: #8d8fd3;" text="Task Manager" textAlignment="CENTER" textFill="WHITE">
+      <Label alignment="CENTER" layoutX="21.0" layoutY="14.0" prefHeight="40.0" prefWidth="265.0" text="Task Manager" textAlignment="CENTER" textOverrun="CENTER_ELLIPSIS">
          <font>
-            <Font size="24.0" />
+            <Font name="System Italic" size="35.0" />
          </font>
       </Label>
-      <Button fx:id="addProcessButton" layoutX="563.0" layoutY="362.0" mnemonicParsing="false" prefWidth="180.0" style="-fx-background-color: #8d8fd3;" text="Add" textFill="WHITE">
+      <Button fx:id="addTaskButton" layoutX="43.0" layoutY="562.0" mnemonicParsing="false" onAction="#addButtonAction" prefHeight="40.0" prefWidth="125.0" style="-fx-background-color: purple;" text="Add" textFill="WHITE">
          <font>
             <Font size="18.0" />
          </font>
       </Button>
-      <Button fx:id="addProcessButton1" layoutX="563.0" layoutY="409.0" mnemonicParsing="false" prefWidth="180.0" style="-fx-background-color: #8d8fd3;" text="Remove" textFill="WHITE">
+      <Button fx:id="removeTaskButton" layoutX="179.0" layoutY="562.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="125.0" style="-fx-background-color: purple;" text="Remove" textFill="WHITE">
          <font>
             <Font size="18.0" />
          </font>
       </Button>
-      <Button fx:id="addProcessButton11" layoutX="563.0" layoutY="458.0" mnemonicParsing="false" prefWidth="180.0" style="-fx-background-color: #8d8fd3;" text="Edit" textFill="WHITE">
+      <Button fx:id="editTaskButton" layoutX="315.0" layoutY="562.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="125.0" style="-fx-background-color: purple;" text="Edit" textFill="WHITE">
          <font>
             <Font size="18.0" />
          </font>
       </Button>
-      <Button fx:id="addProcessButton12" layoutX="563.0" layoutY="561.0" mnemonicParsing="false" prefWidth="180.0" style="-fx-background-color: #8d8fd3;" text="Clear All" textFill="WHITE">
+      <Button fx:id="clearAllButton" layoutX="656.0" layoutY="562.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="125.0" text="Clear All" textFill="PURPLE">
          <font>
             <Font size="18.0" />
          </font>
       </Button>
-      <Button fx:id="addProcessButton121" layoutX="563.0" layoutY="509.0" mnemonicParsing="false" prefWidth="180.0" style="-fx-background-color: #8d8fd3;" text="Delete " textFill="WHITE">
+      <Button fx:id="deleteTaskButton" layoutX="448.0" layoutY="562.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="125.0" style="-fx-background-color: purple;" text="Delete " textFill="WHITE">
          <font>
             <Font size="18.0" />
          </font>
