@@ -196,6 +196,51 @@ public class HelloController {
     }
 
     @FXML
+    public void onAddNotesButtonClick(ActionEvent event) {
+        int taskIndex = taskTable.getSelectionModel().getSelectedIndex();
+        // Get the selected task from the TableView
+        Task selectedTask = taskTable.getItems().get(taskIndex);
+        if (taskIndex >= 0) {
+            try {
+                // Load the FXML file for the dialog window
+                FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("add-notes-dialog.fxml"));
+                Parent root = fxmlLoader.load();
+                AddNotesDialogController controlleradd = fxmlLoader.getController();
+
+                // Create a new dialog window
+                Dialog<ButtonType> dialog = new Dialog<>();
+                dialog.initModality(Modality.APPLICATION_MODAL);
+                dialog.setTitle("Add Notes");
+                dialog.getDialogPane().setContent(root);
+
+                // Show the dialog window and wait for user input
+                Optional<ButtonType> result = dialog.showAndWait();
+
+                // Handle the OK button action
+                if (result.isPresent() && result.get() == ButtonType.OK) {
+                    // Retrieve the notes from the controller
+                    String notes = controlleradd.getNotes();
+                    // Get the selected task from the TableView
+                    //Task selectedTask = taskTable.getItems().get(taskIndex);
+
+                    // Update the notes property of the selected task
+                    selectedTask.setNotes(notes);
+
+                    taskTable.getItems().set(taskIndex, selectedTask);
+
+                }
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        } else {
+            Alert alert = new Alert(Alert.AlertType.WARNING);
+            alert.setTitle("No Task Selected");
+            alert.setHeaderText(null);
+            alert.setContentText("Please select a task to add notes.");
+            alert.showAndWait();
+        }
+    }
+    @FXML
     public void onDarkModeButtonClick(ActionEvent event) throws IOException {
         BackgroundFill backgroundFill=new BackgroundFill(Color.rgb(0,0,0),new CornerRadii(10),new Insets(10));
         Background background=new Background(backgroundFill);

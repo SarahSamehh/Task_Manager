@@ -15,6 +15,8 @@ public class Task {
     //private String EstimatedTime;
     private String assignee;
 
+    private String notes;
+
     public enum Priority {
         LOW, MEDIUM, HIGH
     }
@@ -33,6 +35,27 @@ public class Task {
         this.deadline = deadline;
         this.assignee = assignee;
         ID = ID++;
+        this.notes = null;
+    }
+
+    Task(String title,String description,Priority priority, Status status, LocalDate deadline,String assignee,String notes){
+
+        this.title = title;
+        this.description = description;
+        this.priority = priority;
+        this.status = status;
+        this.deadline = deadline;
+        this.assignee = assignee;
+        ID = ID++;
+        this.notes = notes;
+    }
+
+    public String getNotes() {
+        return notes;
+    }
+
+    public void setNotes(String notes) {
+        this.notes = notes;
     }
 
     public int getID() {

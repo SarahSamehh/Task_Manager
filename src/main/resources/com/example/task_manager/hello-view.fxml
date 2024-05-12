@@ -17,36 +17,41 @@
             <Font name="System Italic" size="35.0" />
          </font>
       </Label>
-      <TableView fx:id="taskTable" layoutX="21.0" layoutY="93.0" prefHeight="407.0" prefWidth="737.0">
+      <TableView fx:id="taskTable" layoutX="23.0" layoutY="93.0" prefHeight="407.0" prefWidth="808.0">
          <columns>
             <TableColumn fx:id="titleColumn" prefWidth="124.00002479553223" text="Title">
                <cellValueFactory>
                   <PropertyValueFactory property="title" />
                </cellValueFactory>
             </TableColumn>
-            <TableColumn fx:id="descriptionColumn" prefWidth="186.39996337890625" text="Description">
+            <TableColumn fx:id="descriptionColumn" prefWidth="167.20004272460938" text="Description">
                <cellValueFactory>
                   <PropertyValueFactory property="description" />
                </cellValueFactory>
             </TableColumn>
-            <TableColumn fx:id="priorityColumn" prefWidth="115.20001220703125" text="Priority">
+            <TableColumn fx:id="priorityColumn" prefWidth="103.20001220703125" text="Priority">
                <cellValueFactory>
                   <PropertyValueFactory property="priority" />
                </cellValueFactory>
             </TableColumn>
-            <TableColumn fx:id="statusColumn" prefWidth="99.99990844726562" text="Status">
+            <TableColumn fx:id="statusColumn" prefWidth="88.79998779296875" text="Status">
                <cellValueFactory>
                   <PropertyValueFactory property="status" />
                </cellValueFactory>
             </TableColumn>
-            <TableColumn fx:id="deadlineColumn" prefWidth="108.79998779296875" text="Deadline">
+            <TableColumn fx:id="deadlineColumn" prefWidth="92.79998779296875" text="Deadline">
                <cellValueFactory>
                   <PropertyValueFactory property="deadline" />
                </cellValueFactory>
             </TableColumn>
-            <TableColumn fx:id="assigneecolumn" prefWidth="100.7999267578125" text="Assignee">
+            <TableColumn fx:id="assigneecolumn" prefWidth="119.99993896484375" text="Assignee">
                <cellValueFactory>
                   <PropertyValueFactory property="assignee" />
+               </cellValueFactory>
+            </TableColumn>
+            <TableColumn fx:id="notescolumn" prefWidth="143.2000732421875" text="Notes">
+               <cellValueFactory>
+                  <PropertyValueFactory property="notes" />
                </cellValueFactory>
             </TableColumn>
          </columns>
@@ -81,13 +86,18 @@
             <Font size="18.0" />
          </font>
       </Button>
-      <ComboBox fx:id="ChangeStatus" layoutX="196.0" layoutY="632.0" prefHeight="25.0" prefWidth="125.0" promptText="Change Status" />
+      <ComboBox fx:id="ChangeStatus" layoutX="405.0" layoutY="632.0" prefHeight="25.0" prefWidth="125.0" promptText="Change Status" />
       <Button fx:id="DarkMode" layoutX="656.0" layoutY="592.0" mnemonicParsing="false" onAction="#onDarkModeButtonClick" prefHeight="40.0" prefWidth="125.0" text="Dark Mode" textFill="PURPLE">
          <font>
             <Font size="18.0" />
          </font>
       </Button>
       <Button fx:id="LightMode" layoutX="656.0" layoutY="644.0" mnemonicParsing="false" onAction="#onLightModeButtonClick" prefHeight="40.0" prefWidth="125.0" text="Light Mode" textFill="PURPLE">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </Button>
+      <Button fx:id="addnotes" layoutX="209.0" layoutY="624.0" mnemonicParsing="false" onAction="#onAddNotesButtonClick" prefHeight="40.0" prefWidth="125.0" style="-fx-background-color: purple;" text="Add Notes" textFill="WHITE">
          <font>
             <Font size="18.0" />
          </font>

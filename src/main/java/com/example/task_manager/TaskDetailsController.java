@@ -50,6 +50,9 @@ public class TaskDetailsController {
     @FXML
     private TextField assignText;
 
+
+
+
     @FXML
     public void initialize() {
         // Populating Status ComboBox
@@ -111,6 +114,7 @@ public class TaskDetailsController {
         Task.Status status = StatusComboBox.getValue(); //Using StatusComboBox for the status
         LocalDate deadline = deadlinePicker.getValue(); // Using deadlinePicker for the due date
         String assignee = assignText.getText();
+
         // Create and return a new Task object
         return new Task(title, description, priority, status, deadline, assignee);
     }
