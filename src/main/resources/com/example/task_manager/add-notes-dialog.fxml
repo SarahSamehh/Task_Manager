@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.layout.VBox?>
+
+<VBox xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.task_manager.AddNotesDialogController">
+   <Label prefHeight="33.0" prefWidth="90.0" text="Add Notes" />
+    <TextArea fx:id="notesTextArea" prefHeight="159.0" prefWidth="300.0" />
+    <Button onAction="#onOKButtonClick" text="OK" />
+</VBox>
