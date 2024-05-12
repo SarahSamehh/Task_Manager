@@ -4,7 +4,7 @@ import java.time.LocalDate;
 import java.time.LocalDateTime;
 
 public class Task {
-    //private int ID;
+    private static int ID = 100;
     private String title;
     private String description;
     private Priority priority;
@@ -32,16 +32,13 @@ public class Task {
         this.status = status;
         this.deadline = deadline;
         this.assignee = assignee;
+        ID = ID++;
     }
 
-    /*public int getID() {
+    public int getID() {
         return ID;
     }
 
-    public void setID(int ID) {
-        this.ID = ID;
-    }
-*/
     public String getTitle() {
         return title;
     }
