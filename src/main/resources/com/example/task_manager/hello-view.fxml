@@ -76,7 +76,7 @@
             <Font size="18.0" />
          </font>
       </Button>
-      <Button layoutX="14.0" layoutY="624.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="156.0" style="-fx-background-color: purple;" text="Change Status" textFill="WHITE">
+      <Button layoutX="14.0" layoutY="624.0" mnemonicParsing="false" onAction="#onChangeStatusClick" prefHeight="40.0" prefWidth="156.0" style="-fx-background-color: purple;" text="Change Status" textFill="WHITE">
          <font>
             <Font size="18.0" />
          </font>

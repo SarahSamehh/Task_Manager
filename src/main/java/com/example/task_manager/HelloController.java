@@ -111,12 +111,6 @@ public class HelloController {
         taskTable.getItems().clear();
     }
 
-//    public void ChangeStatusComboBox(Task.Status status) {
-//        int taskIndex = taskTable.getSelectionModel().getSelectedIndex();
-//        if (taskIndex >= 0) {
-//            ChangeStatusComboBox.setValue(status);
-//        }
-//    }
 
     @FXML
     void editButtonAction(ActionEvent eventt) {
@@ -185,11 +179,19 @@ public class HelloController {
         }
     }
     @FXML
-    public void onDeleteButtonClick(ActionEvent event) throws IOException {
+    public void onDeleteButtonClick(ActionEvent event)  {
+        //Task selectedTask = taskTable.getSelectionModel().getSelectedItem();
         int taskIndex = taskTable.getSelectionModel().getSelectedIndex();
-        if (taskIndex >= 0) {
+        if (taskIndex >= 0 ) {
             taskTable.getItems().remove(taskIndex);
         }
+//        else if (selectedTask==null) {
+//            Alert alert = new Alert(Alert.AlertType.ERROR);
+//            alert.setTitle("Error");
+//            alert.setHeaderText(null);
+//            alert.setContentText("Please select a task");
+//            alert.showAndWait();
+//        }
         //taskDetailsController.set
     }
 
@@ -230,6 +232,33 @@ public class HelloController {
                 (int) (color.getGreen() * 255),
                 (int) (color.getBlue() * 255));
     }
+
+    public void onChangeStatusClick(ActionEvent event) {
+        Task selectedTask = taskTable.getSelectionModel().getSelectedItem();
+        int taskIndex = taskTable.getSelectionModel().getSelectedIndex();
+        if (selectedTask != null && ChangeStatus.getValue() != null) {
+            Task.Status status = ChangeStatus.getValue();
+            selectedTask.setStatus(status);
+            taskTable.getItems().set(taskIndex, selectedTask);
+        }  else if (selectedTask==null) {
+            Alert alert = new Alert(Alert.AlertType.ERROR);
+            alert.setTitle("Error");
+            alert.setHeaderText(null);
+            alert.setContentText("Please select a task");
+            alert.showAndWait();
+        }
+        else if (ChangeStatus.getSelectionModel().isEmpty()) {
+            // Show an error message if no status is selected
+            Alert alert = new Alert(Alert.AlertType.ERROR);
+            alert.setTitle("Error");
+            alert.setHeaderText(null);
+            alert.setContentText("Please select a status");
+            alert.showAndWait();
+        }
+
+    }
+
+
 
 
 
