@@ -43,6 +43,9 @@ public class TaskDetailsController {
     private TextField titleText;
 
     @FXML
+    private TextField assignText;
+
+    @FXML
     public void initialize() {
         // Populating Status ComboBox
         ObservableList<Task.Status> statusOptions = FXCollections.observableArrayList(Task.Status.values());
@@ -60,8 +63,8 @@ public class TaskDetailsController {
         Task.Priority priority = PriorityComboBox.getValue(); //Using PriorityComboBox for the priority
         Task.Status status = StatusComboBox.getValue(); //Using StatusComboBox for the status
         LocalDate deadline = deadlinePicker.getValue(); // Using deadlinePicker for the due date
-
+        String assignee =  assignText.getText();
         // Create and return a new Task object
-        return new Task(title, description, priority, status, deadline);
+        return new Task(title, description, priority, status, deadline,assignee);
     }
 }

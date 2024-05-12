@@ -4,10 +4,10 @@
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.cell.PropertyValueFactory?>
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.text.Font?>
 
-<?import javafx.scene.control.cell.PropertyValueFactory?>
 <Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="627.0" prefWidth="795.0" style="-fx-background-color: white;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.task_manager.HelloController">
 
    <children>
@@ -16,31 +16,36 @@
             <Font name="System Italic" size="35.0" />
          </font>
       </Label>
-      <TableView fx:id="taskTable" layoutX="21.0" layoutY="100.0" prefHeight="400.0" prefWidth="800.0">
+      <TableView fx:id="taskTable" layoutX="21.0" layoutY="93.0" prefHeight="407.0" prefWidth="737.0">
          <columns>
-            <TableColumn fx:id="titleColumn" text="Title" prefWidth="200.0">
+            <TableColumn fx:id="titleColumn" prefWidth="124.00002479553223" text="Title">
                <cellValueFactory>
                   <PropertyValueFactory property="title" />
                </cellValueFactory>
             </TableColumn>
-            <TableColumn fx:id="descriptionColumn" text="Description" prefWidth="250.0">
+            <TableColumn fx:id="descriptionColumn" prefWidth="186.39996337890625" text="Description">
                <cellValueFactory>
                   <PropertyValueFactory property="description" />
                </cellValueFactory>
             </TableColumn>
-            <TableColumn fx:id="priorityColumn" text="Priority" prefWidth="100.0">
+            <TableColumn fx:id="priorityColumn" prefWidth="115.20001220703125" text="Priority">
                <cellValueFactory>
                   <PropertyValueFactory property="priority" />
                </cellValueFactory>
             </TableColumn>
-            <TableColumn fx:id="statusColumn" text="Status" prefWidth="100.0">
+            <TableColumn fx:id="statusColumn" prefWidth="99.99990844726562" text="Status">
                <cellValueFactory>
                   <PropertyValueFactory property="status" />
                </cellValueFactory>
             </TableColumn>
-            <TableColumn fx:id="deadlineColumn" text="Deadline" prefWidth="150.0">
+            <TableColumn fx:id="deadlineColumn" prefWidth="108.79998779296875" text="Deadline">
                <cellValueFactory>
                   <PropertyValueFactory property="deadline" />
+               </cellValueFactory>
+            </TableColumn>
+            <TableColumn fx:id="assigneecolumn" prefWidth="100.7999267578125" text="Assignee" >
+               <cellValueFactory>
+                  <PropertyValueFactory property="assignee" />
                </cellValueFactory>
             </TableColumn>
          </columns>
@@ -50,7 +55,7 @@
             <Font size="18.0" />
          </font>
       </Button>
-      <Button fx:id="removeTaskButton" layoutX="179.0" layoutY="562.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="125.0" style="-fx-background-color: purple;" text="Remove" textFill="WHITE">
+      <Button fx:id="removeTaskButton" layoutX="179.0" layoutY="562.0" mnemonicParsing="false" onAction="#onDeleteButtonClick" prefHeight="40.0" prefWidth="125.0" style="-fx-background-color: purple;" text="Remove" textFill="WHITE">
          <font>
             <Font size="18.0" />
          </font>
@@ -72,4 +77,3 @@
       </Button>
    </children>
 </Pane>
-

@@ -24,14 +24,14 @@ public class Task {
     }
 
 
-    Task(String title,String description,Priority priority, Status status, LocalDate deadline){
+    Task(String title,String description,Priority priority, Status status, LocalDate deadline,String assignee){
 
         this.title = title;
         this.description = description;
         this.priority = priority;
         this.status = status;
         this.deadline = deadline;
-
+        this.assignee = assignee;
     }
 
     /*public int getID() {

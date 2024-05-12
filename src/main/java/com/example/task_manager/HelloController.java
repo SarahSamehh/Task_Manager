@@ -134,7 +134,13 @@ public class HelloController {
         }
     }
 
-
+    @FXML
+    public void onDeleteButtonClick(ActionEvent event) throws IOException {
+        int taskIndex = taskTable.getSelectionModel().getSelectedIndex();
+        if (taskIndex >= 0) {
+            taskTable.getItems().remove(taskIndex);
+        }
+    }
     public void initialize() {
         // Set up due date column
         deadlineColumn.setCellValueFactory(new PropertyValueFactory<>("deadline"));
