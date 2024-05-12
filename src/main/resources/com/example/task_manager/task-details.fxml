@@ -21,7 +21,7 @@
                <Font name="System Bold" size="14.0" />
             </font></Label>
             <TextField fx:id="titleText" GridPane.columnIndex="1" />
-            <Label fx:id="detailsLabel" text="Details:" textFill="PURPLE" GridPane.columnIndex="0" GridPane.rowIndex="1">
+            <Label fx:id="descriptionLabel" text="Description:" textFill="PURPLE" GridPane.columnIndex="0" GridPane.rowIndex="1">
             <font>
                <Font name="System Bold" size="14.0" />
             </font></Label>
@@ -30,12 +30,12 @@
                <Font name="System Bold" size="14.0" />
             </font></Label>
             <ComboBox fx:id="PriorityComboBox" prefWidth="150.0" promptText="Priority" GridPane.columnIndex="1" GridPane.rowIndex="2" />
-            <TextArea fx:id="detailsText" prefHeight="118.0" prefWidth="479.0" wrapText="true" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+            <TextArea fx:id="descriptionText" prefHeight="118.0" prefWidth="479.0" wrapText="true" GridPane.columnIndex="1" GridPane.rowIndex="1" />
             <Label fx:id="StatusLabel" lineSpacing="2.0" text="Status:" textFill="PURPLE" GridPane.rowIndex="3">
             <font>
                <Font name="System Bold" size="14.0" />
             </font></Label>
-            <ComboBox fx:id="StausComboBox" prefWidth="150.0" promptText="Status" GridPane.columnIndex="1" GridPane.rowIndex="3" />
+            <ComboBox fx:id="StatusComboBox" prefWidth="150.0" promptText="Status" GridPane.columnIndex="1" GridPane.rowIndex="3" />
             <Label fx:id="deadlineLabel" text="Deadline:" textFill="PURPLE" GridPane.columnIndex="0" GridPane.rowIndex="4">
             <font>
                <Font name="System Bold" size="14.0" />
