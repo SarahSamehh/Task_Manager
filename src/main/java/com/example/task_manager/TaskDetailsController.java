@@ -13,13 +13,13 @@ public class TaskDetailsController {
     private Label StatusLabel;
 
     @FXML
-    private ComboBox<String> StausComboBox;
+    private ComboBox<Task.Status> StatusComboBox;
 
     @FXML
     private Label PriorityLabel;
 
     @FXML
-    private ComboBox<String> PriorityComboBox;
+    private ComboBox<Task.Priority> PriorityComboBox;
 
     @FXML
     private Label deadlineLabel;
@@ -28,10 +28,10 @@ public class TaskDetailsController {
     private DatePicker deadlinePicker;
 
     @FXML
-    private Label detailsLabel;
+    private Label descriptionLabel;
 
     @FXML
-    private TextArea detailsText;
+    private TextArea descriptionText;
 
     @FXML
     private DialogPane dialogPane;
@@ -44,23 +44,24 @@ public class TaskDetailsController {
 
     @FXML
     public void initialize() {
-        ObservableList<String> statusOptions = FXCollections.observableArrayList("To Do", "In Progress", "Done");
-        StausComboBox.setItems(statusOptions);
+        // Populating Status ComboBox
+        ObservableList<Task.Status> statusOptions = FXCollections.observableArrayList(Task.Status.values());
+        StatusComboBox.setItems(statusOptions);
 
-        // Populating priority ComboBox
-        ObservableList<String> priorityOptions = FXCollections.observableArrayList("High", "Medium", "Low");
+        // Populating Priority ComboBox
+        ObservableList<Task.Priority> priorityOptions = FXCollections.observableArrayList(Task.Priority.values());
         PriorityComboBox.setItems(priorityOptions);
     }
 
     // process the data..
     public Task getTask() {
         String title = titleText.getText(); // Using titleText for the title
-        String description = detailsText.getText(); // Using detailsText for the description
-        String priority = PriorityComboBox.getValue(); // Using PriorityComboBox for the priority
-        String status = StausComboBox.getValue(); // Using StausComboBox for the status
-        LocalDate dueDate = deadlinePicker.getValue(); // Using deadlinePicker for the due date
+        String description = descriptionText.getText(); // Using detailsText for the description
+        Task.Priority priority = PriorityComboBox.getValue(); //Using PriorityComboBox for the priority
+        Task.Status status = StatusComboBox.getValue(); //Using StatusComboBox for the status
+        LocalDate deadline = deadlinePicker.getValue(); // Using deadlinePicker for the due date
 
         // Create and return a new Task object
-        return new Task(title, description, priority, status, dueDate);
+        return new Task(title, description, priority, status, deadline);
     }
 }

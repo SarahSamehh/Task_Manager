@@ -4,12 +4,7 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
-import javafx.scene.control.Button;
-import javafx.scene.control.ButtonType;
-import javafx.scene.control.Dialog;
-import javafx.scene.control.TableCell;
-import javafx.scene.control.TableColumn;
-import javafx.scene.control.TableView;
+import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.stage.Modality;
 
@@ -28,7 +23,7 @@ public class HelloController {
     private TableView<Task> taskTable;
 
     @FXML
-    private TableColumn<Task, LocalDate> dueDateColumn;
+    private TableColumn<Task, LocalDate> deadlineColumn;
 
     @FXML
     private Button addTaskButton;
@@ -53,14 +48,28 @@ public class HelloController {
             // Show the dialog window and wait for user input
             Optional<ButtonType> result = dialog.showAndWait();
 
+
             // Handle the OK button action
             if (result.isPresent() && result.get() == ButtonType.OK) {
                 // Retrieve the task from TaskDetailsController
                 Task newTask = controller.getTask();
 
-                // Add the task to the table
-                taskTable.getItems().add(newTask);
+                // Check if all required fields are filled
+                if (newTask.getTitle() != null && !newTask.getTitle().isEmpty() &&
+                        newTask.getDescription() != null && !newTask.getDescription().isEmpty() &&
+                        newTask.getPriority() != null && newTask.getStatus() != null && newTask.getDeadline() != null) {
+                    // Add the task to the table
+                    taskTable.getItems().add(newTask);
+                } else {
+                    // Show an error message or handle the case where some fields are empty
+                    Alert alert = new Alert(Alert.AlertType.ERROR);
+                    alert.setTitle("Error");
+                    alert.setHeaderText(null);
+                    alert.setContentText("Please fill all required fields.");
+                    alert.showAndWait();
+                }
             }
+
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -128,8 +137,8 @@ public class HelloController {
 
     public void initialize() {
         // Set up due date column
-        dueDateColumn.setCellValueFactory(new PropertyValueFactory<>("duedate"));
-        dueDateColumn.setCellFactory(column -> new TableCell<Task, LocalDate>() {
+        deadlineColumn.setCellValueFactory(new PropertyValueFactory<>("deadline"));
+        deadlineColumn.setCellFactory(column -> new TableCell<Task, LocalDate>() {
             @Override
             protected void updateItem(LocalDate item, boolean empty) {
                 super.updateItem(item, empty);
