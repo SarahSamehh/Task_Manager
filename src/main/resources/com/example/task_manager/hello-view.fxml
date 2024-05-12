@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
@@ -8,10 +9,10 @@
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.text.Font?>
 
-<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="627.0" prefWidth="795.0" style="-fx-background-color: white;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.task_manager.HelloController">
+<Pane fx:id="MainPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="711.0" prefWidth="856.0" style="-fx-background-color: white;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.task_manager.HelloController">
 
    <children>
-      <Label alignment="CENTER" layoutX="21.0" layoutY="14.0" prefHeight="40.0" prefWidth="265.0" text="Task Manager" textAlignment="CENTER" textOverrun="CENTER_ELLIPSIS">
+      <Label alignment="CENTER" layoutX="21.0" layoutY="14.0" prefHeight="40.0" prefWidth="265.0" text="Task Manager" textAlignment="CENTER" textFill="PURPLE" textOverrun="CENTER_ELLIPSIS">
          <font>
             <Font name="System Italic" size="35.0" />
          </font>
@@ -43,34 +44,50 @@
                   <PropertyValueFactory property="deadline" />
                </cellValueFactory>
             </TableColumn>
-            <TableColumn fx:id="assigneecolumn" prefWidth="100.7999267578125" text="Assignee" >
+            <TableColumn fx:id="assigneecolumn" prefWidth="100.7999267578125" text="Assignee">
                <cellValueFactory>
                   <PropertyValueFactory property="assignee" />
                </cellValueFactory>
             </TableColumn>
          </columns>
       </TableView>
-      <Button fx:id="addTaskButton" layoutX="43.0" layoutY="562.0" mnemonicParsing="false" onAction="#addButtonAction" prefHeight="40.0" prefWidth="125.0" style="-fx-background-color: purple;" text="Add" textFill="WHITE">
+      <Button fx:id="addTaskButton" layoutX="14.0" layoutY="562.0" mnemonicParsing="false" onAction="#addButtonAction" prefHeight="40.0" prefWidth="125.0" style="-fx-background-color: purple;" text="Add" textFill="WHITE">
          <font>
             <Font size="18.0" />
          </font>
       </Button>
-      <Button fx:id="removeTaskButton" layoutX="179.0" layoutY="562.0" mnemonicParsing="false" onAction="#onDeleteButtonClick" prefHeight="40.0" prefWidth="125.0" style="-fx-background-color: purple;" text="Remove" textFill="WHITE">
+      <Button fx:id="removeTaskButton" layoutX="146.0" layoutY="562.0" mnemonicParsing="false" onAction="#onDeleteButtonClick" prefHeight="40.0" prefWidth="125.0" style="-fx-background-color: purple;" text="Remove" textFill="WHITE">
          <font>
             <Font size="18.0" />
          </font>
       </Button>
-      <Button fx:id="editTaskButton" layoutX="315.0" layoutY="562.0" mnemonicParsing="false" onAction="#editButtonAction" prefHeight="40.0" prefWidth="125.0" style="-fx-background-color: purple;" text="Edit" textFill="WHITE">
+      <Button fx:id="editTaskButton" layoutX="273.0" layoutY="562.0" mnemonicParsing="false" onAction="#editButtonAction" prefHeight="40.0" prefWidth="125.0" style="-fx-background-color: purple;" text="Edit" textFill="WHITE">
          <font>
             <Font size="18.0" />
          </font>
       </Button>
-      <Button fx:id="clearAllButton" layoutX="656.0" layoutY="562.0" mnemonicParsing="false" onAction="#clearAllButtonAction" prefHeight="40.0" prefWidth="125.0" text="Clear All" textFill="PURPLE">
+      <Button fx:id="clearAllButton" layoutX="656.0" layoutY="542.0" mnemonicParsing="false" onAction="#clearAllButtonAction" prefHeight="40.0" prefWidth="125.0" text="Clear All" textFill="PURPLE">
          <font>
             <Font size="18.0" />
          </font>
       </Button>
-      <Button fx:id="deleteTaskButton" layoutX="448.0" layoutY="562.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="125.0" style="-fx-background-color: purple;" text="Delete " textFill="WHITE">
+      <Button fx:id="deleteTaskButton" layoutX="405.0" layoutY="562.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="125.0" style="-fx-background-color: purple;" text="Delete " textFill="WHITE">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </Button>
+      <Button layoutX="14.0" layoutY="624.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="156.0" style="-fx-background-color: purple;" text="Change Status" textFill="WHITE">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </Button>
+      <ComboBox fx:id="ChangeStatus" layoutX="196.0" layoutY="632.0" prefHeight="25.0" prefWidth="125.0" promptText="Change Status" />
+      <Button fx:id="DarkMode" layoutX="656.0" layoutY="592.0" mnemonicParsing="false" onAction="#onDarkModeButtonClick" prefHeight="40.0" prefWidth="125.0" text="Dark Mode" textFill="PURPLE">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </Button>
+      <Button fx:id="LightMode" layoutX="656.0" layoutY="644.0" mnemonicParsing="false" onAction="#onLightModeButtonClick" prefHeight="40.0" prefWidth="125.0" text="Light Mode" textFill="PURPLE">
          <font>
             <Font size="18.0" />
          </font>

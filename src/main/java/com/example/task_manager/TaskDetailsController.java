@@ -4,6 +4,8 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
+import javafx.scene.layout.Background;
+import javafx.scene.layout.GridPane;
 
 import java.time.LocalDate;
 
@@ -37,6 +39,9 @@ public class TaskDetailsController {
     private DialogPane dialogPane;
 
     @FXML
+    private GridPane gridPane;
+
+    @FXML
     private Label titleLabel;
 
     @FXML
@@ -55,6 +60,7 @@ public class TaskDetailsController {
         ObservableList<Task.Priority> priorityOptions = FXCollections.observableArrayList(Task.Priority.values());
         PriorityComboBox.setItems(priorityOptions);
     }
+
     public void setStatusComboBox(Task.Status status) {
         StatusComboBox.setValue(status);
     }
@@ -104,10 +110,11 @@ public class TaskDetailsController {
         Task.Priority priority = PriorityComboBox.getValue(); //Using PriorityComboBox for the priority
         Task.Status status = StatusComboBox.getValue(); //Using StatusComboBox for the status
         LocalDate deadline = deadlinePicker.getValue(); // Using deadlinePicker for the due date
-        String assignee =  assignText.getText();
+        String assignee = assignText.getText();
         // Create and return a new Task object
-        return new Task(title, description, priority, status, deadline,assignee);
+        return new Task(title, description, priority, status, deadline, assignee);
     }
+
     public void initData(Task task) {
         // Set the initial values of the fields based on the selected task
         titleText.setText(task.getTitle());
@@ -115,5 +122,9 @@ public class TaskDetailsController {
         PriorityComboBox.setValue(task.getPriority());
         StatusComboBox.setValue(task.getStatus());
         deadlinePicker.setValue(task.getDeadline());
+    }
+
+    public void setGridPaneBackground(Background background) {
+        gridPane.setBackground(background);
     }
 }

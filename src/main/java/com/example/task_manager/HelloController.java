@@ -1,11 +1,19 @@
 package com.example.task_manager;
 
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.geometry.Insets;
 import javafx.scene.Parent;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.layout.Background;
+import javafx.scene.layout.BackgroundFill;
+import javafx.scene.layout.CornerRadii;
+import javafx.scene.layout.Pane;
+import javafx.scene.paint.Color;
 import javafx.stage.Modality;
 
 import java.io.IOException;
@@ -21,12 +29,22 @@ import javafx.scene.control.ComboBox;
 
 
 public class HelloController {
-
+    static ArrayList<Task> tasks = new ArrayList<>();
     @FXML
     private TableView<Task> taskTable;
 
     @FXML
     private TableColumn<Task, LocalDate> deadlineColumn;
+
+    @FXML
+    private Pane MainPane;
+
+    @FXML
+    private ComboBox<Task.Status> ChangeStatus;
+
+
+//    @FXML
+//   // private ComboBox<Task.Status> ChangeStatusComboBox;
 
     @FXML
     private Button addTaskButton;
@@ -37,7 +55,6 @@ public class HelloController {
     @FXML
     private Button clearAllButton;
 
-    static ArrayList<Task> tasks = new ArrayList<>();
 
     @FXML
     void addButtonAction(ActionEvent event) {
@@ -71,7 +88,6 @@ public class HelloController {
                         newTask.getPriority() != null && newTask.getStatus() != null && newTask.getDeadline() != null) {
                     // Add the task to the table
                     taskTable.getItems().add(newTask);
-                    tasks.add(newTask);
                 } else {
                     // Show an error message or handle the case where some fields are empty
                     Alert alert = new Alert(Alert.AlertType.ERROR);
@@ -92,6 +108,13 @@ public class HelloController {
         // Clear all items in the table
         taskTable.getItems().clear();
     }
+
+//    public void ChangeStatusComboBox(Task.Status status) {
+//        int taskIndex = taskTable.getSelectionModel().getSelectedIndex();
+//        if (taskIndex >= 0) {
+//            ChangeStatusComboBox.setValue(status);
+//        }
+//    }
 
     @FXML
     void editButtonAction(ActionEvent event) {
@@ -156,9 +179,63 @@ public class HelloController {
         if (taskIndex >= 0) {
             taskTable.getItems().remove(taskIndex);
         }
+        //taskDetailsController.set
     }
 
+    @FXML
+    public void onDarkModeButtonClick(ActionEvent event) throws IOException {
+        BackgroundFill backgroundFill=new BackgroundFill(Color.rgb(0,0,0),new CornerRadii(10),new Insets(10));
+        Background background=new Background(backgroundFill);
+        MainPane.setBackground(background);
+        taskTable.setBackground(background);
+        setRowBackground(Color.GRAY);
+
+        // controller.setGridPaneBackground(background);
+    }
+
+    @FXML
+    public void onLightModeButtonClick(ActionEvent event) throws IOException {
+        BackgroundFill backgroundFill=new BackgroundFill(Color.rgb(255,255,255),new CornerRadii(10),new Insets(10));
+        Background background=new Background(backgroundFill);
+        MainPane.setBackground(background);
+        taskTable.setBackground(background);
+        setRowBackground(Color.WHITE);
+
+        //contoller.setGridPaneBackground(background);
+
+    }
+
+    // Method to set row background color
+    private void setRowBackground(Color color) {
+        taskTable.setRowFactory(tv -> {
+            TableRow<Task> row = new TableRow<>();
+            row.setStyle("-fx-background-color: " + toRGBCode(color) + ";");
+            return row;
+        });
+    }
+    private String toRGBCode(Color color) {
+        return String.format("#%02X%02X%02X",
+                (int) (color.getRed() * 255),
+                (int) (color.getGreen() * 255),
+                (int) (color.getBlue() * 255));
+    }
+
+
+
+
+    public void onChangeStatusClick(ActionEvent event) throws IOException {
+        int taskIndex = taskTable.getSelectionModel().getSelectedIndex();
+        if (taskIndex >= 0) {
+        }
+    }
+
+
+
+
     public void initialize() {
+
+        ObservableList<Task.Status> statusOptions = FXCollections.observableArrayList(Task.Status.values());
+        ChangeStatus.setItems(statusOptions);
         // Set up due date column
         deadlineColumn.setCellValueFactory(new PropertyValueFactory<>("deadline"));
         deadlineColumn.setCellFactory(column -> new TableCell<Task, LocalDate>() {
@@ -172,5 +249,6 @@ public class HelloController {
                 }
             }
         });
+
     }
 }
