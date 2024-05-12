@@ -4,34 +4,29 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
-import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.ButtonType;
 import javafx.scene.control.Dialog;
-import javafx.scene.control.Label;
+import javafx.scene.control.TableCell;
+import javafx.scene.control.TableColumn;
+import javafx.scene.control.TableView;
+import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.stage.Modality;
-import javafx.stage.Stage;
 
 import java.io.IOException;
+import java.time.LocalDate;
 import java.util.Optional;
-
 
 public class HelloController {
 
     @FXML
+    private TableView<Task> taskTable;
+
+    @FXML
+    private TableColumn<Task, LocalDate> dueDateColumn;
+
+    @FXML
     private Button addTaskButton;
-
-    @FXML
-    private Button clearAllButton;
-
-    @FXML
-    private Button deleteTaskButton;
-
-    @FXML
-    private Button editTaskButton;
-
-    @FXML
-    private Button removeTaskButton;
 
     @FXML
     void addButtonAction(ActionEvent event) {
@@ -55,10 +50,30 @@ public class HelloController {
 
             // Handle the OK button action
             if (result.isPresent() && result.get() == ButtonType.OK) {
-                // Add code here to handle OK button action, if needed
+                // Retrieve the task from TaskDetailsController
+                Task newTask = controller.getTask();
+
+                // Add the task to the table
+                taskTable.getItems().add(newTask);
             }
         } catch (IOException e) {
             e.printStackTrace();
         }
+    }
+
+    public void initialize() {
+        // Set up due date column
+        dueDateColumn.setCellValueFactory(new PropertyValueFactory<>("duedate"));
+        dueDateColumn.setCellFactory(column -> new TableCell<Task, LocalDate>() {
+            @Override
+            protected void updateItem(LocalDate item, boolean empty) {
+                super.updateItem(item, empty);
+                if (empty || item == null) {
+                    setText(null);
+                } else {
+                    setText(item.toString());
+                }
+            }
+        });
     }
 }

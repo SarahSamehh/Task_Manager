@@ -1,7 +1,7 @@
 package com.example.task_manager;
+
 import java.time.LocalDate;
 import java.time.LocalDateTime;
-
 
 public class Task {
     private int ID;
@@ -15,21 +15,19 @@ public class Task {
     private LocalDateTime CompletionDate;
     private String Assignee;
 
-
-    Task(int ID,String Title,String Description){
-        this.ID=ID;
-        this.Title=Title;
-        this.Description=Description;
-        this.Status="Uncompleted";
+    public Task(int ID, String Title, String Description) {
+        this.ID = ID;
+        this.Title = Title;
+        this.Description = Description;
+        this.Status = "Uncompleted";
     }
 
-    public Task(String Title, String description,String priority, String status, LocalDate dueDate) {
-        this.Title=Title;
-        this.Description=description;
-        this.Status=status;
-        this.Priority=priority;
-        this.Duedate=dueDate;
-
+    public Task(String Title, String description, String priority, String status, LocalDate dueDate) {
+        this.Title = Title;
+        this.Description = description;
+        this.Status = status;
+        this.Priority = priority;
+        this.Duedate = dueDate;
     }
 
     public int getID() {
@@ -111,7 +109,4 @@ public class Task {
     public void setAssignee(String assignee) {
         Assignee = assignee;
     }
-
-
-
 }

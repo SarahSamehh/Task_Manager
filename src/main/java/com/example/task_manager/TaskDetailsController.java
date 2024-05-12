@@ -15,7 +15,6 @@ public class TaskDetailsController {
     @FXML
     private ComboBox<String> StausComboBox;
 
-
     @FXML
     private Label PriorityLabel;
 
@@ -64,7 +63,4 @@ public class TaskDetailsController {
         // Create and return a new Task object
         return new Task(title, description, priority, status, dueDate);
     }
-
-
-
 }
