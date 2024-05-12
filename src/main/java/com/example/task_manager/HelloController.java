@@ -223,11 +223,6 @@ public class HelloController {
 
 
 
-    public void onChangeStatusClick(ActionEvent event) throws IOException {
-        int taskIndex = taskTable.getSelectionModel().getSelectedIndex();
-        if (taskIndex >= 0) {
-        }
-    }
 
 
 
