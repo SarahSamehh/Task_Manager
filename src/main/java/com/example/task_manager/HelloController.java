@@ -41,6 +41,10 @@ public class HelloController {
     private Pane MainPane;
 
     @FXML
+    private TextField addnotes;
+
+
+    @FXML
     private ComboBox<Task.Status> ChangeStatus;
 
 
@@ -196,50 +200,25 @@ public class HelloController {
     }
 
     @FXML
-    public void onAddNotesButtonClick(ActionEvent event) {
-        int taskIndex = taskTable.getSelectionModel().getSelectedIndex();
-        // Get the selected task from the TableView
-        Task selectedTask = taskTable.getItems().get(taskIndex);
-        if (taskIndex >= 0) {
-            try {
-                // Load the FXML file for the dialog window
-                FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("add-notes-dialog.fxml"));
-                Parent root = fxmlLoader.load();
-                AddNotesDialogController controlleradd = fxmlLoader.getController();
+    public void onAddNotesButtonClick(ActionEvent eventt) {
+        // Get the selected task from the table
+        Task selectedTask = taskTable.getSelectionModel().getSelectedItem();
 
-                // Create a new dialog window
-                Dialog<ButtonType> dialog = new Dialog<>();
-                dialog.initModality(Modality.APPLICATION_MODAL);
-                dialog.setTitle("Add Notes");
-                dialog.getDialogPane().setContent(root);
+        if (selectedTask != null) {
+            int taskIndex = taskTable.getSelectionModel().getSelectedIndex();
+            selectedTask.setNotes(addnotes.getText());
+            taskTable.getItems().set(taskIndex, selectedTask);
 
-                // Show the dialog window and wait for user input
-                Optional<ButtonType> result = dialog.showAndWait();
-
-                // Handle the OK button action
-                if (result.isPresent() && result.get() == ButtonType.OK) {
-                    // Retrieve the notes from the controller
-                    String notes = controlleradd.getNotes();
-                    // Get the selected task from the TableView
-                    //Task selectedTask = taskTable.getItems().get(taskIndex);
-
-                    // Update the notes property of the selected task
-                    selectedTask.setNotes(notes);
-
-                    taskTable.getItems().set(taskIndex, selectedTask);
-
-                }
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
         } else {
-            Alert alert = new Alert(Alert.AlertType.WARNING);
-            alert.setTitle("No Task Selected");
+            // Show an error message if no task is selected
+            Alert alert = new Alert(Alert.AlertType.ERROR);
+            alert.setTitle("Error");
             alert.setHeaderText(null);
-            alert.setContentText("Please select a task to add notes.");
+            alert.setContentText("Please select a task to edit notes.");
             alert.showAndWait();
         }
     }
+
     @FXML
     public void onDarkModeButtonClick(ActionEvent event) throws IOException {
         BackgroundFill backgroundFill=new BackgroundFill(Color.rgb(0,0,0),new CornerRadii(10),new Insets(10));
