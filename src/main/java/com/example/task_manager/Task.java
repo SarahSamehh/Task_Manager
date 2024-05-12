@@ -4,109 +4,107 @@ import java.time.LocalDate;
 import java.time.LocalDateTime;
 
 public class Task {
-    private int ID;
-    private String Title;
-    private String Description;
-    private String Status;
-    private String EstimatedTime;
-    private String Priority;
-    private LocalDate Duedate;
-    private LocalDateTime CreationDate;
-    private LocalDateTime CompletionDate;
-    private String Assignee;
+    //private int ID;
+    private String title;
+    private String description;
+    private Priority priority;
+    private Status status;
+    private LocalDate deadline;
+    private LocalDateTime creationDate;
+    private LocalDateTime completionDate;
+    //private String EstimatedTime;
+    private String assignee;
 
-    public Task(int ID, String Title, String Description) {
-        this.ID = ID;
-        this.Title = Title;
-        this.Description = Description;
-        this.Status = "Uncompleted";
+    public enum Priority {
+        LOW, MEDIUM, HIGH
     }
 
-    public Task(String Title, String description, String priority, String status, LocalDate dueDate) {
-        this.Title = Title;
-        this.Description = description;
-        this.Status = status;
-        this.Priority = priority;
-        this.Duedate = dueDate;
+    public enum Status {
+        TODO, IN_PROGRESS, DONE
     }
 
-    public int getID() {
+
+    Task(String title,String description,Priority priority, Status status, LocalDate deadline){
+
+        this.title = title;
+        this.description = description;
+        this.priority = priority;
+        this.status = status;
+        this.deadline = deadline;
+
+    }
+
+    /*public int getID() {
         return ID;
     }
 
     public void setID(int ID) {
         this.ID = ID;
     }
-
+*/
     public String getTitle() {
-        return Title;
+        return title;
     }
 
     public void setTitle(String title) {
-        Title = title;
+        this.title = title;
     }
 
     public String getDescription() {
-        return Description;
+        return description;
     }
 
     public void setDescription(String description) {
-        Description = description;
+        this.description = description;
     }
 
-    public String getStatus() {
-        return Status;
+    public Priority getPriority() {
+        return priority;
     }
 
-    public void setStatus(String status) {
-        Status = status;
+    public void setPriority(Priority priority) {
+        this.priority = priority;
     }
 
-    public String getEstimatedTime() {
-        return EstimatedTime;
+    public Status getStatus() {
+        return status;
     }
 
-    public void setEstimatedTime(String estimatedTime) {
-        EstimatedTime = estimatedTime;
+    public void setStatus(Status status) {
+        this.status = status;
+    }
+    public LocalDate getDeadline() {
+        return deadline;
     }
 
-    public String getPriority() {
-        return Priority;
-    }
-
-    public void setPriority(String priority) {
-        Priority = priority;
-    }
-
-    public LocalDate getDuedate() {
-        return Duedate;
-    }
-
-    public void setDuedate(LocalDate duedate) {
-        Duedate = duedate;
+    public void setDeadline(LocalDate deadline) {
+        this.deadline = deadline;
     }
 
     public LocalDateTime getCreationDate() {
-        return CreationDate;
+        return creationDate;
     }
 
     public void setCreationDate(LocalDateTime creationDate) {
-        CreationDate = creationDate;
+        this.creationDate = creationDate;
     }
 
     public LocalDateTime getCompletionDate() {
-        return CompletionDate;
+        return completionDate;
     }
 
     public void setCompletionDate(LocalDateTime completionDate) {
-        CompletionDate = completionDate;
+        this.completionDate = completionDate;
     }
 
     public String getAssignee() {
-        return Assignee;
+        return assignee;
     }
 
     public void setAssignee(String assignee) {
-        Assignee = assignee;
+        this.assignee = assignee;
     }
+
+
+
 }

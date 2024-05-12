@@ -40,7 +40,7 @@
             </TableColumn>
             <TableColumn fx:id="deadlineColumn" text="Deadline" prefWidth="150.0">
                <cellValueFactory>
-                  <PropertyValueFactory property="dueDate" />
+                  <PropertyValueFactory property="deadline" />
                </cellValueFactory>
             </TableColumn>
          </columns>
@@ -55,12 +55,12 @@
             <Font size="18.0" />
          </font>
       </Button>
-      <Button fx:id="editTaskButton" layoutX="315.0" layoutY="562.0" mnemonicParsing="false" onAction="#editButtonAction" prefHeight="40.0" prefWidth="125.0" style="-fx-background-color: purple;" text="Edit" textFill="WHITE">
+      <Button fx:id="editTaskButton" layoutX="315.0" layoutY="562.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="125.0" style="-fx-background-color: purple;" text="Edit" textFill="WHITE">
          <font>
             <Font size="18.0" />
          </font>
       </Button>
-      <Button fx:id="clearAllButton" layoutX="656.0" layoutY="562.0" mnemonicParsing="false" onAction="#clearAllButtonAction"  prefHeight="40.0" prefWidth="125.0" text="Clear All" textFill="PURPLE">
+      <Button fx:id="clearAllButton" layoutX="656.0" layoutY="562.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="125.0" text="Clear All" textFill="PURPLE">
          <font>
             <Font size="18.0" />
          </font>
