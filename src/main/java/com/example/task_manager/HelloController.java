@@ -14,6 +14,8 @@ import java.util.Optional;
 import javafx.scene.control.Alert;
 import javafx.scene.control.TextField;
 import javafx.scene.control.TextArea;
+import javafx.scene.control.ComboBox;
+
 
 
 
@@ -27,6 +29,13 @@ public class HelloController {
 
     @FXML
     private Button addTaskButton;
+
+    @FXML
+    private Button editTaskButton;
+
+    @FXML
+    private Button clearAllButton;
+
 
     @FXML
     void addButtonAction(ActionEvent event) {
@@ -80,6 +89,7 @@ public class HelloController {
         // Clear all items in the table
         taskTable.getItems().clear();
     }
+
     @FXML
     void editButtonAction(ActionEvent event) {
         // Get the selected task from the table
@@ -90,14 +100,10 @@ public class HelloController {
                 // Load the FXML file for the dialog window
                 FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("task-details.fxml"));
                 Parent root = fxmlLoader.load();
+                TaskDetailsController controller = fxmlLoader.getController();
 
-                // Access UI elements directly
-                TextField taskNameField = (TextField) root.lookup("#titleText");
-                TextArea taskDescriptionArea = (TextArea) root.lookup("#detailsText");
-
-                // Pre-populate UI elements with task details
-                taskNameField.setText(selectedTask.getTitle());
-                taskDescriptionArea.setText(selectedTask.getDescription());
+                // Pass the selected task to the controller
+                controller.initData(selectedTask);
 
                 // Create a new dialog window
                 Dialog<ButtonType> dialog = new Dialog<>();
@@ -113,13 +119,16 @@ public class HelloController {
 
                 // Handle the OK button action
                 if (result.isPresent() && result.get() == ButtonType.OK) {
-                    // Update the selected task with the edited details
-                    selectedTask.setTitle(taskNameField.getText());
-                    selectedTask.setDescription(taskDescriptionArea.getText());
+                    Task newTask = controller.getTask();
 
-                    // Update the task in the table
-                    int selectedIndex = taskTable.getSelectionModel().getSelectedIndex();
-                    taskTable.getItems().set(selectedIndex, selectedTask);
+                    // Check if all required fields are filled
+                    if (newTask.getTitle() != null && !newTask.getTitle().isEmpty() &&
+                            newTask.getDescription() != null && !newTask.getDescription().isEmpty() &&
+                            newTask.getPriority() != null && newTask.getStatus() != null && newTask.getDeadline() != null) {
+                        // Update the task in the table
+                        int selectedIndex = taskTable.getSelectionModel().getSelectedIndex();
+                        taskTable.getItems().set(selectedIndex, newTask);
+                    }
                 }
             } catch (IOException e) {
                 e.printStackTrace();
@@ -133,7 +142,6 @@ public class HelloController {
             alert.showAndWait();
         }
     }
-
     @FXML
     public void onDeleteButtonClick(ActionEvent event) throws IOException {
         int taskIndex = taskTable.getSelectionModel().getSelectedIndex();
@@ -141,6 +149,7 @@ public class HelloController {
             taskTable.getItems().remove(taskIndex);
         }
     }
+
     public void initialize() {
         // Set up due date column
         deadlineColumn.setCellValueFactory(new PropertyValueFactory<>("deadline"));

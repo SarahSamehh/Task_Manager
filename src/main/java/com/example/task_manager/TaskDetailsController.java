@@ -55,6 +55,47 @@ public class TaskDetailsController {
         ObservableList<Task.Priority> priorityOptions = FXCollections.observableArrayList(Task.Priority.values());
         PriorityComboBox.setItems(priorityOptions);
     }
+    public void setStatusComboBox(Task.Status status) {
+        StatusComboBox.setValue(status);
+    }
+
+    public void setPriorityComboBox(Task.Priority priority) {
+        PriorityComboBox.setValue(priority);
+    }
+
+    public void setDeadlinePicker(LocalDate date) {
+        deadlinePicker.setValue(date);
+    }
+
+    public void setDescriptionText(String text) {
+        descriptionText.setText(text);
+    }
+
+    public void setTitleText(String text) {
+        titleText.setText(text);
+    }
+
+    // Getters for UI components
+
+    public Task.Status getStatusComboBoxValue() {
+        return StatusComboBox.getValue();
+    }
+
+    public Task.Priority getPriorityComboBoxValue() {
+        return PriorityComboBox.getValue();
+    }
+
+    public LocalDate getDeadlinePickerValue() {
+        return deadlinePicker.getValue();
+    }
+
+    public String getDescriptionText() {
+        return descriptionText.getText();
+    }
+
+    public String getTitleText() {
+        return titleText.getText();
+    }
 
     // process the data..
     public Task getTask() {
@@ -66,5 +107,13 @@ public class TaskDetailsController {
         String assignee =  assignText.getText();
         // Create and return a new Task object
         return new Task(title, description, priority, status, deadline,assignee);
+    }
+    public void initData(Task task) {
+        // Set the initial values of the fields based on the selected task
+        titleText.setText(task.getTitle());
+        descriptionText.setText(task.getDescription());
+        PriorityComboBox.setValue(task.getPriority());
+        StatusComboBox.setValue(task.getStatus());
+        deadlinePicker.setValue(task.getDeadline());
     }
 }

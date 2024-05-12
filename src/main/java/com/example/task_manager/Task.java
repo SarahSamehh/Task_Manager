@@ -59,7 +59,8 @@ public class Task {
     }
 
     public Priority getPriority() {
-        return priority;
+        return priority != null ? priority : Priority.LOW; // Return a default value if priority is null
+
     }
 
     public void setPriority(Priority priority) {
@@ -67,7 +68,7 @@ public class Task {
     }
 
     public Status getStatus() {
-        return status;
+        return status != null ? status : Status.TODO; // Return a default value if status is null
     }
 
     public void setStatus(Status status) {
