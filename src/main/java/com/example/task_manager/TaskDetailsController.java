@@ -15,7 +15,6 @@ public class TaskDetailsController {
     @FXML
     private ComboBox<Task.Status> StatusComboBox;
 
-
     @FXML
     private Label PriorityLabel;
 
@@ -65,7 +64,4 @@ public class TaskDetailsController {
         // Create and return a new Task object
         return new Task(title, description, priority, status, deadline);
     }
-
-
-
 }
