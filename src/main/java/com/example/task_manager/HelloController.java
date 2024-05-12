@@ -10,6 +10,7 @@ import javafx.stage.Modality;
 
 import java.io.IOException;
 import java.time.LocalDate;
+import java.util.ArrayList;
 import java.util.Optional;
 import javafx.scene.control.Alert;
 import javafx.scene.control.TextField;
@@ -36,6 +37,7 @@ public class HelloController {
     @FXML
     private Button clearAllButton;
 
+    static ArrayList<Task> tasks = new ArrayList<>();
 
     @FXML
     void addButtonAction(ActionEvent event) {
@@ -69,6 +71,7 @@ public class HelloController {
                         newTask.getPriority() != null && newTask.getStatus() != null && newTask.getDeadline() != null) {
                     // Add the task to the table
                     taskTable.getItems().add(newTask);
+                    tasks.add(newTask);
                 } else {
                     // Show an error message or handle the case where some fields are empty
                     Alert alert = new Alert(Alert.AlertType.ERROR);
@@ -120,6 +123,11 @@ public class HelloController {
                 // Handle the OK button action
                 if (result.isPresent() && result.get() == ButtonType.OK) {
                     Task newTask = controller.getTask();
+                    for (int i = 0; i< tasks.size();i++) {
+                        if(tasks.get(i).getID() == newTask.getID()){
+                            tasks.set(i,newTask);
+                        }
+                    }
 
                     // Check if all required fields are filled
                     if (newTask.getTitle() != null && !newTask.getTitle().isEmpty() &&
