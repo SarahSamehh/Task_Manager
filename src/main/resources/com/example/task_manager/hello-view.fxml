@@ -38,7 +38,7 @@
                   <PropertyValueFactory property="status" />
                </cellValueFactory>
             </TableColumn>
-            <TableColumn fx:id="dueDateColumn" text="Due Date" prefWidth="150.0">
+            <TableColumn fx:id="deadlineColumn" text="Due Date" prefWidth="150.0">
                <cellValueFactory>
                   <PropertyValueFactory property="dueDate" />
                </cellValueFactory>
