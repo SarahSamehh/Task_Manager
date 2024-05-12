@@ -5,7 +5,10 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
 
+
+
 import java.io.IOException;
+import java.util.concurrent.TimeUnit;
 
 public class HelloApplication extends Application {
     @Override
@@ -15,6 +18,7 @@ public class HelloApplication extends Application {
         stage.setTitle("Task Manager!");
         stage.setScene(scene);
         stage.show();
+        NotificationThread.startNotifications(10, TimeUnit.SECONDS);
     }
 
     public static void main(String[] args) {
