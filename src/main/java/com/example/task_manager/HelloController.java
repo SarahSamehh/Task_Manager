@@ -20,6 +20,9 @@ import javafx.stage.Modality;
 import java.io.IOException;
 import java.time.LocalDate;
 import java.util.ArrayList;
+import javafx.scene.control.Alert;
+import javafx.scene.control.TextField;
+import javafx.scene.control.ComboBox;
 
 public class HelloController {
     static ArrayList<Task> tasks = new ArrayList<>();
@@ -50,7 +53,7 @@ public class HelloController {
     private Button clearAllButton;
 
     @FXML
-    void addButtonAction() {
+    void addButtonAction(ActionEvent eventt) {
         try {
             // Load the FXML file for the dialog window
             FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("task-details.fxml"));
@@ -85,6 +88,7 @@ public class HelloController {
                     alert.setHeaderText(null);
                     alert.setContentText("Please fill all required fields.");
                     alert.show();
+                    event.consume();
                 }
             });
 
@@ -96,13 +100,13 @@ public class HelloController {
     }
 
     @FXML
-    void clearAllButtonAction() {
+    void clearAllButtonAction(ActionEvent event) {
         // Clear all items in the table
         taskTable.getItems().clear();
     }
 
     @FXML
-    void editButtonAction() {
+    void editButtonAction(ActionEvent eventt) {
         // Get the selected task from the table
         Task selectedTask = taskTable.getSelectionModel().getSelectedItem();
 
@@ -149,6 +153,7 @@ public class HelloController {
                         alert.setHeaderText(null);
                         alert.setContentText("Please fill all required fields.");
                         alert.show();
+                        event.consume();
                     }
                 });
 
@@ -168,7 +173,7 @@ public class HelloController {
     }
 
     @FXML
-    void onDeleteButtonClick() {
+    void onDeleteButtonClick(ActionEvent event) {
         int taskIndex = taskTable.getSelectionModel().getSelectedIndex();
         if (taskIndex >= 0) {
             taskTable.getItems().remove(taskIndex);
@@ -176,7 +181,7 @@ public class HelloController {
     }
 
     @FXML
-    void onAddNotesButtonClick() {
+    public void onAddNotesButtonClick(ActionEvent event) {
         // Get the selected task from the table
         Task selectedTask = taskTable.getSelectionModel().getSelectedItem();
 
@@ -196,17 +201,27 @@ public class HelloController {
     }
 
     @FXML
-    void onDarkModeButtonClick() {
-        setBackground(Color.rgb(0, 0, 0));
+    public void onDarkModeButtonClick(ActionEvent event) throws IOException {
+        BackgroundFill backgroundFill = new BackgroundFill(Color.rgb(0, 0, 0), new CornerRadii(10), new Insets(10));
+        Background background = new Background(backgroundFill);
+        MainPane.setBackground(background);
+        taskTable.setBackground(background);
+        setRowBackground(Color.GRAY);
     }
 
-    @FXML
-    void onLightModeButtonClick() {
-        setBackground(Color.rgb(255, 255, 255));
-    }
+        @FXML
+        public void onLightModeButtonClick(ActionEvent event) throws IOException {
+            BackgroundFill backgroundFill = new BackgroundFill(Color.rgb(255, 255, 255), new CornerRadii(10), new Insets(10));
+            Background background = new Background(backgroundFill);
+            MainPane.setBackground(background);
+            taskTable.setBackground(background);
+            setRowBackground(Color.WHITE);
+        }
 
-    @FXML
-    void onChangeStatusClick() {
+
+
+            @FXML
+    void onChangeStatusClick(ActionEvent event) {
         Task selectedTask = taskTable.getSelectionModel().getSelectedItem();
         int taskIndex = taskTable.getSelectionModel().getSelectedIndex();
         if (selectedTask != null && ChangeStatus.getValue() != null) {
