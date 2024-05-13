@@ -30,44 +30,39 @@
                   <PropertyValueFactory property="description" />
                </cellValueFactory>
             </TableColumn>
-            <TableColumn fx:id="priorityColumn" prefWidth="103.20001220703125" text="Priority">
+            <TableColumn fx:id="priorityColumn" prefWidth="111.20001220703125" text="Priority">
                <cellValueFactory>
                   <PropertyValueFactory property="priority" />
                </cellValueFactory>
             </TableColumn>
-            <TableColumn fx:id="statusColumn" prefWidth="88.79998779296875" text="Status">
+            <TableColumn fx:id="statusColumn" prefWidth="81.60003662109375" text="Status">
                <cellValueFactory>
                   <PropertyValueFactory property="status" />
                </cellValueFactory>
             </TableColumn>
-            <TableColumn fx:id="deadlineColumn" prefWidth="92.79998779296875" text="Deadline">
+            <TableColumn fx:id="deadlineColumn" prefWidth="103.20001220703125" text="Deadline">
                <cellValueFactory>
                   <PropertyValueFactory property="deadline" />
                </cellValueFactory>
             </TableColumn>
-            <TableColumn fx:id="assigneecolumn" prefWidth="119.99993896484375" text="Assignee">
+            <TableColumn fx:id="assigneecolumn" prefWidth="108.79998779296875" text="Assignee">
                <cellValueFactory>
                   <PropertyValueFactory property="assignee" />
                </cellValueFactory>
             </TableColumn>
-            <TableColumn fx:id="notescolumn" prefWidth="143.2000732421875" text="Notes">
+            <TableColumn fx:id="notescolumn" prefWidth="109.60009765625" text="Notes">
                <cellValueFactory>
                   <PropertyValueFactory property="notes" />
                </cellValueFactory>
             </TableColumn>
          </columns>
       </TableView>
-      <Button fx:id="addTaskButton" layoutX="14.0" layoutY="562.0" mnemonicParsing="false" onAction="#addButtonAction" prefHeight="40.0" prefWidth="125.0" style="-fx-background-color: purple;" text="Add" textFill="WHITE">
+      <Button fx:id="addTaskButton" layoutX="14.0" layoutY="562.0" mnemonicParsing="false" onAction="#addButtonAction" prefHeight="40.0" prefWidth="138.0" style="-fx-background-color: purple;" text="Add" textFill="WHITE">
          <font>
             <Font size="18.0" />
          </font>
       </Button>
-      <Button fx:id="removeTaskButton" layoutX="146.0" layoutY="562.0" mnemonicParsing="false" onAction="#onDeleteButtonClick" prefHeight="40.0" prefWidth="125.0" style="-fx-background-color: purple;" text="Remove" textFill="WHITE">
-         <font>
-            <Font size="18.0" />
-         </font>
-      </Button>
-      <Button fx:id="editTaskButton" layoutX="273.0" layoutY="562.0" mnemonicParsing="false" onAction="#editButtonAction" prefHeight="40.0" prefWidth="125.0" style="-fx-background-color: purple;" text="Edit" textFill="WHITE">
+      <Button fx:id="editTaskButton" layoutX="170.0" layoutY="562.0" mnemonicParsing="false" onAction="#editButtonAction" prefHeight="40.0" prefWidth="125.0" style="-fx-background-color: purple;" text="Edit" textFill="WHITE">
          <font>
             <Font size="18.0" />
          </font>
@@ -77,17 +72,12 @@
             <Font size="18.0" />
          </font>
       </Button>
-      <Button fx:id="deleteTaskButton" layoutX="405.0" layoutY="562.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="125.0" style="-fx-background-color: purple;" text="Delete " textFill="WHITE">
+      <Button fx:id="deleteTaskButton" layoutX="336.0" layoutY="562.0" mnemonicParsing="false" onAction="#onDeleteButtonClick" prefHeight="40.0" prefWidth="125.0" style="-fx-background-color: purple;" text="Delete " textFill="WHITE">
          <font>
             <Font size="18.0" />
          </font>
       </Button>
-      <Button layoutX="14.0" layoutY="624.0" mnemonicParsing="false" onAction="#onChangeStatusClick" prefHeight="40.0" prefWidth="156.0" style="-fx-background-color: purple;" text="Change Status" textFill="WHITE">
-         <font>
-            <Font size="18.0" />
-         </font>
-      </Button>
-      <ComboBox fx:id="ChangeStatus" layoutX="198.0" layoutY="632.0" prefHeight="25.0" prefWidth="125.0" promptText="Change Status" />
+      <ComboBox fx:id="ChangeStatus" layoutX="14.0" layoutY="624.0" onAction="#onChangeStatusClick" prefHeight="40.0" prefWidth="138.0" style="-fx-background-color: purple;" />
       <Button fx:id="DarkMode" layoutX="656.0" layoutY="592.0" mnemonicParsing="false" onAction="#onDarkModeButtonClick" prefHeight="40.0" prefWidth="125.0" text="Dark Mode" textFill="PURPLE">
          <font>
             <Font size="18.0" />
@@ -98,11 +88,16 @@
             <Font size="18.0" />
          </font>
       </Button>
-      <Button layoutX="336.0" layoutY="625.0" mnemonicParsing="false" onAction="#onAddNotesButtonClick" prefHeight="40.0" prefWidth="125.0" style="-fx-background-color: purple;" text="Add Notes" textFill="WHITE">
+      <Button layoutX="170.0" layoutY="624.0" mnemonicParsing="false" onAction="#onAddNotesButtonClick" prefHeight="40.0" prefWidth="125.0" style="-fx-background-color: purple;" text="Add Notes" textFill="WHITE">
          <font>
             <Font size="18.0" />
          </font>
       </Button>
-      <TextField fx:id="addnotes" layoutX="476.0" layoutY="632.0" />
+      <TextField fx:id="addnotes" layoutX="336.0" layoutY="631.0" promptText="Notes.." />
+      <Label fx:id="StatusLabell" layoutX="21.0" layoutY="624.0" prefHeight="40.0" prefWidth="102.0" style="-fx-background-color: purple;" text="      Status" textAlignment="CENTER" textFill="WHITE">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </Label>
    </children>
 </Pane>
