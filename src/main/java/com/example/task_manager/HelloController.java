@@ -288,11 +288,7 @@ public class HelloController {
                     row.setStyle("");
                 }
             });
-            return row;
-        });
 
-        taskTable.setRowFactory(tv -> {
-            TableRow<Task> row = new TableRow<>();
 
             // This handler is triggered when a drag is detected on a row.
             row.setOnDragDetected(event -> {
@@ -331,7 +327,9 @@ public class HelloController {
             });
 
             return row;
+
         });
+
     }
     private void setBackground(Color color) {
         BackgroundFill backgroundFill = new BackgroundFill(color, new CornerRadii(10), new Insets(10));
