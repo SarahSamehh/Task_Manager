@@ -3,7 +3,7 @@ package com.example.task_manager;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 
-public class Task {
+public class Task implements Comparable<Task> {
     private static int ID = 100;
     private String title;
     private String description;
@@ -144,4 +144,10 @@ public class Task {
     public void setAssignee(String assignee) {
         this.assignee = assignee;
     }
+
+    @Override
+    public int compareTo(Task t){
+        return this.deadline.compareTo(t.getDeadline());
+    }
+
 }
