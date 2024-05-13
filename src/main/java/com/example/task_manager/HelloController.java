@@ -85,6 +85,7 @@ public class HelloController {
                         newTask.getPriority() != null && newTask.getStatus() != null && newTask.getDeadline() != null) {
                     // Add the task to the table
                     taskTable.getItems().add(newTask);
+                    tasks.add(newTask);
                 } else {
                     Alert alert = new Alert(Alert.AlertType.ERROR);
                     alert.setTitle("Error");
@@ -106,6 +107,7 @@ public class HelloController {
     void clearAllButtonAction(ActionEvent event) {
         // Clear all items in the table
         taskTable.getItems().clear();
+        tasks.clear();
     }
 
     @FXML
@@ -184,6 +186,12 @@ public class HelloController {
     void onDeleteButtonClick(ActionEvent event) {
         int taskIndex = taskTable.getSelectionModel().getSelectedIndex();
         if (taskIndex >= 0) {
+            Task selectedTask = taskTable.getSelectionModel().getSelectedItem();
+            for (int i = 0; i < tasks.size(); i++) {
+                if (tasks.get(i).getID() == selectedTask.getID()) {
+                    tasks.remove(i);
+                }
+            }
             taskTable.getItems().remove(taskIndex);
         }
     }
