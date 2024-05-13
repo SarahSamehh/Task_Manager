@@ -14,7 +14,7 @@ public class Task {
     private LocalDateTime completionDate;
     //private String EstimatedTime;
     private String assignee;
-
+    private AssigneeType assigneeType;
     private String notes;
 
     public enum Priority {
@@ -25,20 +25,11 @@ public class Task {
         TODO, IN_PROGRESS, DONE
     }
 
-
-    Task(String title,String description,Priority priority, Status status, LocalDate deadline,String assignee){
-
-        this.title = title;
-        this.description = description;
-        this.priority = priority;
-        this.status = status;
-        this.deadline = deadline;
-        this.assignee = assignee;
-        ID = ID++;
-        this.notes = null;
+    public enum AssigneeType{
+        TEAM, INDIVIDUAL, UNKNOWN
     }
 
-    Task(String title,String description,Priority priority, Status status, LocalDate deadline,String assignee,String notes){
+    Task(String title,String description,Priority priority, Status status, LocalDate deadline,String assignee,AssigneeType assigneeType){
 
         this.title = title;
         this.description = description;
@@ -46,6 +37,21 @@ public class Task {
         this.status = status;
         this.deadline = deadline;
         this.assignee = assignee;
+        this.assigneeType = assigneeType;
+        ID = ID++;
+        this.notes = null;
+
+    }
+
+    Task(String title,String description,Priority priority, Status status, LocalDate deadline,String assignee,AssigneeType assigneeType,String notes){
+
+        this.title = title;
+        this.description = description;
+        this.priority = priority;
+        this.status = status;
+        this.deadline = deadline;
+        this.assignee = assignee;
+        this.assigneeType = assigneeType;
         ID = ID++;
         this.notes = notes;
     }
@@ -83,9 +89,6 @@ public class Task {
 
     }
 
-    public void setPriority(Priority priority) {
-        this.priority = priority;
-    }
 
     public Status getStatus() {
         return status != null ? status : Status.TODO; // Return a default value if status is null
@@ -93,6 +96,19 @@ public class Task {
 
     public void setStatus(Status status) {
         this.status = status;
+    }
+
+    public void setPriority(Priority priority) {
+        this.priority = priority;
+    }
+
+    public AssigneeType getAssigneeType() {
+        return assigneeType != null ? assigneeType : AssigneeType.INDIVIDUAL; // Return a default value if priority is null
+
+    }
+
+    public void setAssigneeType(AssigneeType assigneeType) {
+        this.assigneeType = assigneeType;
     }
     public LocalDate getDeadline() {
         return deadline;
