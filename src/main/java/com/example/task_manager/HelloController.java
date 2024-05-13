@@ -106,6 +106,11 @@ public class HelloController {
     }
 
     @FXML
+    void sortButtonAction(ActionEvent event){
+        taskTable.getItems().sort(Task::compareTo);
+    }
+
+    @FXML
     void editButtonAction(ActionEvent eventt) {
         // Get the selected task from the table
         Task selectedTask = taskTable.getSelectionModel().getSelectedItem();
