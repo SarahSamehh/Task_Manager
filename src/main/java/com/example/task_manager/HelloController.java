@@ -2,13 +2,13 @@ package com.example.task_manager;
 
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
-import javafx.application.Platform;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.geometry.Insets;
 import javafx.scene.Parent;
 import javafx.scene.control.*;
+import javafx.scene.control.cell.CheckBoxTableCell;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.Background;
 import javafx.scene.layout.BackgroundFill;
@@ -20,14 +20,6 @@ import javafx.stage.Modality;
 import java.io.IOException;
 import java.time.LocalDate;
 import java.util.ArrayList;
-import java.util.Optional;
-import javafx.scene.control.Alert;
-import javafx.scene.control.TextField;
-import javafx.scene.control.TextArea;
-import javafx.scene.control.ComboBox;
-
-
-
 
 public class HelloController {
     static ArrayList<Task> tasks = new ArrayList<>();
@@ -36,6 +28,8 @@ public class HelloController {
 
     @FXML
     private TableColumn<Task, LocalDate> deadlineColumn;
+    @FXML
+    private TableColumn<Task, Boolean> checkBoxColumn;
 
     @FXML
     private Pane MainPane;
@@ -43,13 +37,8 @@ public class HelloController {
     @FXML
     private TextField addnotes;
 
-
     @FXML
     private ComboBox<Task.Status> ChangeStatus;
-
-
-//    @FXML
-//   // private ComboBox<Task.Status> ChangeStatusComboBox;
 
     @FXML
     private Button addTaskButton;
@@ -60,9 +49,8 @@ public class HelloController {
     @FXML
     private Button clearAllButton;
 
-
     @FXML
-    void addButtonAction(ActionEvent eventt) {
+    void addButtonAction() {
         try {
             // Load the FXML file for the dialog window
             FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("task-details.fxml"));
@@ -80,9 +68,8 @@ public class HelloController {
             Button okButton = (Button) dialog.getDialogPane().lookupButton(ButtonType.OK);
             Button cancelButton = (Button) dialog.getDialogPane().lookupButton(ButtonType.CANCEL);
 
-
             // Handle the OK button action
-            okButton.addEventFilter(ActionEvent.ACTION, event ->  {
+            okButton.addEventFilter(ActionEvent.ACTION, event -> {
                 // Retrieve the task from TaskDetailsController
                 Task newTask = controller.getTask();
 
@@ -98,7 +85,6 @@ public class HelloController {
                     alert.setHeaderText(null);
                     alert.setContentText("Please fill all required fields.");
                     alert.show();
-                    event.consume();
                 }
             });
 
@@ -110,14 +96,13 @@ public class HelloController {
     }
 
     @FXML
-    void clearAllButtonAction(ActionEvent event) {
+    void clearAllButtonAction() {
         // Clear all items in the table
         taskTable.getItems().clear();
     }
 
-
     @FXML
-    void editButtonAction(ActionEvent eventt) {
+    void editButtonAction() {
         // Get the selected task from the table
         Task selectedTask = taskTable.getSelectionModel().getSelectedItem();
 
@@ -143,11 +128,11 @@ public class HelloController {
                 Button cancelButton = (Button) dialog.getDialogPane().lookupButton(ButtonType.CANCEL);
 
                 // Handle the OK button action
-                okButton.addEventFilter(ActionEvent.ACTION, event ->  {
+                okButton.addEventFilter(ActionEvent.ACTION, event -> {
                     Task newTask = controller.getTask();
-                    for (int i = 0; i< tasks.size();i++) {
-                        if(tasks.get(i).getID() == newTask.getID()){
-                            tasks.set(i,newTask);
+                    for (int i = 0; i < tasks.size(); i++) {
+                        if (tasks.get(i).getID() == newTask.getID()) {
+                            tasks.set(i, newTask);
                         }
                     }
 
@@ -164,7 +149,6 @@ public class HelloController {
                         alert.setHeaderText(null);
                         alert.setContentText("Please fill all required fields.");
                         alert.show();
-                        event.consume();
                     }
                 });
 
@@ -182,25 +166,17 @@ public class HelloController {
             alert.showAndWait();
         }
     }
+
     @FXML
-    public void onDeleteButtonClick(ActionEvent event)  {
-        //Task selectedTask = taskTable.getSelectionModel().getSelectedItem();
+    void onDeleteButtonClick() {
         int taskIndex = taskTable.getSelectionModel().getSelectedIndex();
-        if (taskIndex >= 0 ) {
+        if (taskIndex >= 0) {
             taskTable.getItems().remove(taskIndex);
         }
-//        else if (selectedTask==null) {
-//            Alert alert = new Alert(Alert.AlertType.ERROR);
-//            alert.setTitle("Error");
-//            alert.setHeaderText(null);
-//            alert.setContentText("Please select a task");
-//            alert.showAndWait();
-//        }
-        //taskDetailsController.set
     }
 
     @FXML
-    public void onAddNotesButtonClick(ActionEvent eventt) {
+    void onAddNotesButtonClick() {
         // Get the selected task from the table
         Task selectedTask = taskTable.getSelectionModel().getSelectedItem();
 
@@ -220,58 +196,30 @@ public class HelloController {
     }
 
     @FXML
-    public void onDarkModeButtonClick(ActionEvent event) throws IOException {
-        BackgroundFill backgroundFill=new BackgroundFill(Color.rgb(0,0,0),new CornerRadii(10),new Insets(10));
-        Background background=new Background(backgroundFill);
-        MainPane.setBackground(background);
-        taskTable.setBackground(background);
-        setRowBackground(Color.GRAY);
-
-        // controller.setGridPaneBackground(background);
+    void onDarkModeButtonClick() {
+        setBackground(Color.rgb(0, 0, 0));
     }
 
     @FXML
-    public void onLightModeButtonClick(ActionEvent event) throws IOException {
-        BackgroundFill backgroundFill=new BackgroundFill(Color.rgb(255,255,255),new CornerRadii(10),new Insets(10));
-        Background background=new Background(backgroundFill);
-        MainPane.setBackground(background);
-        taskTable.setBackground(background);
-        setRowBackground(Color.WHITE);
-
-        //contoller.setGridPaneBackground(background);
-
+    void onLightModeButtonClick() {
+        setBackground(Color.rgb(255, 255, 255));
     }
 
-    // Method to set row background color
-    private void setRowBackground(Color color) {
-        taskTable.setRowFactory(tv -> {
-            TableRow<Task> row = new TableRow<>();
-            row.setStyle("-fx-background-color: " + toRGBCode(color) + ";");
-            return row;
-        });
-    }
-    private String toRGBCode(Color color) {
-        return String.format("#%02X%02X%02X",
-                (int) (color.getRed() * 255),
-                (int) (color.getGreen() * 255),
-                (int) (color.getBlue() * 255));
-    }
-
-    public void onChangeStatusClick(ActionEvent event) {
+    @FXML
+    void onChangeStatusClick() {
         Task selectedTask = taskTable.getSelectionModel().getSelectedItem();
         int taskIndex = taskTable.getSelectionModel().getSelectedIndex();
         if (selectedTask != null && ChangeStatus.getValue() != null) {
             Task.Status status = ChangeStatus.getValue();
             selectedTask.setStatus(status);
             taskTable.getItems().set(taskIndex, selectedTask);
-        }  else if (selectedTask==null) {
+        } else if (selectedTask == null) {
             Alert alert = new Alert(Alert.AlertType.ERROR);
             alert.setTitle("Error");
             alert.setHeaderText(null);
             alert.setContentText("Please select a task");
             alert.showAndWait();
-        }
-        else if (ChangeStatus.getSelectionModel().isEmpty()) {
+        } else if (ChangeStatus.getSelectionModel().isEmpty()) {
             // Show an error message if no status is selected
             Alert alert = new Alert(Alert.AlertType.ERROR);
             alert.setTitle("Error");
@@ -279,28 +227,67 @@ public class HelloController {
             alert.setContentText("Please select a status");
             alert.showAndWait();
         }
-
     }
 
-
-
     public void initialize() {
-
         ObservableList<Task.Status> statusOptions = FXCollections.observableArrayList(Task.Status.values());
         ChangeStatus.setItems(statusOptions);
+
         // Set up due date column
         deadlineColumn.setCellValueFactory(new PropertyValueFactory<>("deadline"));
-        deadlineColumn.setCellFactory(column -> new TableCell<Task, LocalDate>() {
+
+        // Set up checkbox column
+        checkBoxColumn.setCellValueFactory(new PropertyValueFactory<>("selected"));
+        checkBoxColumn.setCellFactory(column -> new TableCell<Task, Boolean>() {
             @Override
-            protected void updateItem(LocalDate item, boolean empty) {
+            protected void updateItem(Boolean item, boolean empty) {
                 super.updateItem(item, empty);
                 if (empty || item == null) {
-                    setText(null);
+                    setGraphic(null);
                 } else {
-                    setText(item.toString());
+                    Task task = getTableView().getItems().get(getIndex());
+                    if (task.getStatus() == Task.Status.DONE) {
+                        setGraphic(new Label("✔")); // Display a check mark
+                    } else {
+                        setGraphic(null); // Clear the graphic if not done
+                    }
                 }
             }
         });
 
+        // Set up row factory to change background color based on task status
+        taskTable.setRowFactory(tv -> {
+            TableRow<Task> row = new TableRow<>();
+            row.itemProperty().addListener((obs, oldTask, newTask) -> {
+                if (newTask != null && newTask.getStatus() == Task.Status.DONE) {
+                    row.setStyle("-fx-background-color: lightgreen;");
+                } else {
+                    row.setStyle("");
+                }
+            });
+            return row;
+        });
+    }
+    private void setBackground(Color color) {
+        BackgroundFill backgroundFill = new BackgroundFill(color, new CornerRadii(10), new Insets(10));
+        Background background = new Background(backgroundFill);
+        MainPane.setBackground(background);
+        taskTable.setBackground(background);
+        setRowBackground(color);
+    }
+
+    private void setRowBackground(Color color) {
+        taskTable.setRowFactory(tv -> {
+            TableRow<Task> row = new TableRow<>();
+            row.setStyle("-fx-background-color: " + toRGBCode(color) + ";");
+            return row;
+        });
+    }
+
+    private String toRGBCode(Color color) {
+        return String.format("#%02X%02X%02X",
+                (int) (color.getRed() * 255),
+                (int) (color.getGreen() * 255),
+                (int) (color.getBlue() * 255));
     }
 }

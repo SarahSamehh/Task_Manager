@@ -12,10 +12,10 @@ public class Task {
     private LocalDate deadline;
     private LocalDateTime creationDate;
     private LocalDateTime completionDate;
-    //private String EstimatedTime;
     private String assignee;
     private AssigneeType assigneeType;
     private String notes;
+    private boolean selected; // New boolean property for selection
 
     public enum Priority {
         LOW, MEDIUM, HIGH
@@ -29,8 +29,7 @@ public class Task {
         TEAM, INDIVIDUAL, UNKNOWN
     }
 
-    Task(String title,String description,Priority priority, Status status, LocalDate deadline,String assignee,AssigneeType assigneeType){
-
+    Task(String title, String description, Priority priority, Status status, LocalDate deadline, String assignee, AssigneeType assigneeType) {
         this.title = title;
         this.description = description;
         this.priority = priority;
@@ -38,13 +37,11 @@ public class Task {
         this.deadline = deadline;
         this.assignee = assignee;
         this.assigneeType = assigneeType;
-        ID = ID++;
+        ID++; // Increment ID here
         this.notes = null;
-
     }
 
-    Task(String title,String description,Priority priority, Status status, LocalDate deadline,String assignee,AssigneeType assigneeType,String notes){
-
+    Task(String title, String description, Priority priority, Status status, LocalDate deadline, String assignee, AssigneeType assigneeType, String notes) {
         this.title = title;
         this.description = description;
         this.priority = priority;
@@ -52,8 +49,16 @@ public class Task {
         this.deadline = deadline;
         this.assignee = assignee;
         this.assigneeType = assigneeType;
-        ID = ID++;
+        ID++; // Increment ID here
         this.notes = notes;
+    }
+
+    public boolean isSelected() {
+        return selected;
+    }
+
+    public void setSelected(boolean selected) {
+        this.selected = selected;
     }
 
     public String getNotes() {
@@ -86,9 +91,7 @@ public class Task {
 
     public Priority getPriority() {
         return priority != null ? priority : Priority.LOW; // Return a default value if priority is null
-
     }
-
 
     public Status getStatus() {
         return status != null ? status : Status.TODO; // Return a default value if status is null
@@ -104,12 +107,12 @@ public class Task {
 
     public AssigneeType getAssigneeType() {
         return assigneeType != null ? assigneeType : AssigneeType.INDIVIDUAL; // Return a default value if priority is null
-
     }
 
     public void setAssigneeType(AssigneeType assigneeType) {
         this.assigneeType = assigneeType;
     }
+
     public LocalDate getDeadline() {
         return deadline;
     }
@@ -141,7 +144,4 @@ public class Task {
     public void setAssignee(String assignee) {
         this.assignee = assignee;
     }
-
-
-
 }
