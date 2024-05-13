@@ -30,12 +30,12 @@
                   <PropertyValueFactory property="description" />
                </cellValueFactory>
             </TableColumn>
-            <TableColumn fx:id="priorityColumn" prefWidth="111.20001220703125" text="Priority">
+            <TableColumn fx:id="priorityColumn" prefWidth="96.79998779296875" text="Priority">
                <cellValueFactory>
                   <PropertyValueFactory property="priority" />
                </cellValueFactory>
             </TableColumn>
-            <TableColumn fx:id="statusColumn" prefWidth="81.60003662109375" text="Status">
+            <TableColumn fx:id="statusColumn" prefWidth="97.60003662109375" text="Status">
                <cellValueFactory>
                   <PropertyValueFactory property="status" />
                </cellValueFactory>
