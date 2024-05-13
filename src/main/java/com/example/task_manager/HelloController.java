@@ -284,13 +284,6 @@ public class HelloController {
 
 
 
-
-
-
-
-
-
-
     public void initialize() {
 
         ObservableList<Task.Status> statusOptions = FXCollections.observableArrayList(Task.Status.values());

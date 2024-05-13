@@ -22,7 +22,7 @@
             <font>
                <Font name="System Bold" size="14.0" />
             </font></Label>
-            <TextField fx:id="titleText" style="-fx-border-color: ORCHID;" GridPane.columnIndex="1" />
+            <TextField fx:id="titleText" style="-fx-border-color: ORCHID; -fx-border-radius: 5;" GridPane.columnIndex="1" />
             <Label fx:id="descriptionLabel" text="Description:" textFill="PURPLE" GridPane.columnIndex="0" GridPane.rowIndex="1">
             <font>
                <Font name="System Bold" size="14.0" />
@@ -31,13 +31,13 @@
             <font>
                <Font name="System Bold" size="14.0" />
             </font></Label>
-            <ComboBox fx:id="PriorityComboBox" prefHeight="27.0" prefWidth="116.0" style="-fx-background-color: white; -fx-border-color: ORCHID;" GridPane.columnIndex="1" GridPane.rowIndex="5" />
-            <TextArea fx:id="descriptionText" prefHeight="118.0" prefWidth="479.0" style="-fx-border-color: oRCHID;" wrapText="true" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+            <ComboBox fx:id="PriorityComboBox" prefHeight="27.0" prefWidth="116.0" style="-fx-background-color: white; -fx-border-color: ORCHID; -fx-border-radius: 5;" GridPane.columnIndex="1" GridPane.rowIndex="5" />
+            <TextArea fx:id="descriptionText" prefHeight="118.0" prefWidth="479.0" style="-fx-border-color: oRCHID; -fx-border-radius: 5;" wrapText="true" GridPane.columnIndex="1" GridPane.rowIndex="1" />
             <Label fx:id="StatusLabel" lineSpacing="2.0" text="Status:" textFill="PURPLE" GridPane.rowIndex="8">
             <font>
                <Font name="System Bold" size="14.0" />
             </font></Label>
-            <ComboBox fx:id="StatusComboBox" prefHeight="27.0" prefWidth="119.0" style="-fx-background-color: white; -fx-border-color: ORCHID;" GridPane.columnIndex="1" GridPane.rowIndex="8" />
+            <ComboBox fx:id="StatusComboBox" prefHeight="27.0" prefWidth="119.0" style="-fx-background-color: white; -fx-border-color: ORCHID; -fx-border-radius: 5;" GridPane.columnIndex="1" GridPane.rowIndex="8" />
             <Label fx:id="deadlineLabel" text="Deadline:" textFill="PURPLE" GridPane.rowIndex="10">
             <font>
                <Font name="System Bold" size="14.0" />
@@ -48,18 +48,18 @@
                <Font name="System Bold" size="14.0" />
             </font>
          </Label>
-         <RadioButton mnemonicParsing="false" text="Team" GridPane.columnIndex="1" GridPane.rowIndex="12">
+         <RadioButton fx:id="TeamRadioButton" mnemonicParsing="false" text="Team" GridPane.columnIndex="1" GridPane.rowIndex="12">
             <toggleGroup>
                <ToggleGroup fx:id="g1" />
             </toggleGroup>
          </RadioButton>
-         <RadioButton mnemonicParsing="false" text="Individual" toggleGroup="$g1" GridPane.columnIndex="1" GridPane.rowIndex="13" />
+         <RadioButton fx:id="IndividualRadioButton" mnemonicParsing="false" text="Individual" toggleGroup="$g1" GridPane.columnIndex="1" GridPane.rowIndex="13" />
          <Label prefHeight="45.0" prefWidth="117.0" text="Assignee Name :" textFill="PURPLE" GridPane.rowIndex="14">
             <font>
                <Font name="System Bold" size="14.0" />
             </font>
          </Label>
-         <TextField fx:id="assignText" style="-fx-border-color: ORCHID;" GridPane.columnIndex="1" GridPane.rowIndex="14" />
+         <TextField fx:id="assignText" style="-fx-border-color: ORCHID; -fx-border-radius: 5;" GridPane.columnIndex="1" GridPane.rowIndex="14" />
             <columnConstraints>
                 <ColumnConstraints maxWidth="137.39998779296874" minWidth="53.39998779296875" prefWidth="137.39998779296874" />
                 <ColumnConstraints maxWidth="474.4000122070313" minWidth="390.4000122070313" prefWidth="390.4000122070313" />

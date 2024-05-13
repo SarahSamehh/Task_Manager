@@ -50,7 +50,14 @@ public class TaskDetailsController {
     @FXML
     private TextField assignText;
 
+    @FXML
+    private RadioButton IndividualRadioButton;
 
+    @FXML
+    private RadioButton TeamRadioButton;
+
+    @FXML
+    private ToggleGroup g1;
 
 
     @FXML
@@ -62,6 +69,10 @@ public class TaskDetailsController {
         // Populating Priority ComboBox
         ObservableList<Task.Priority> priorityOptions = FXCollections.observableArrayList(Task.Priority.values());
         PriorityComboBox.setItems(priorityOptions);
+
+        // Initialize ToggleGroup
+        TeamRadioButton.setToggleGroup(g1);
+        IndividualRadioButton.setToggleGroup(g1);
     }
 
     public void setStatusComboBox(Task.Status status) {
@@ -114,9 +125,25 @@ public class TaskDetailsController {
         Task.Status status = StatusComboBox.getValue(); //Using StatusComboBox for the status
         LocalDate deadline = deadlinePicker.getValue(); // Using deadlinePicker for the due date
         String assignee = assignText.getText();
+        Task.AssigneeType assigneeType;
+
+        // Determine assignee type based on selected RadioButton
+        RadioButton selectedRadioButton = (RadioButton) g1.getSelectedToggle();
+        if (selectedRadioButton != null) {
+            String radioButtonValue = selectedRadioButton.getText();
+            if (radioButtonValue.equals("Team")) {
+                assigneeType = Task.AssigneeType.TEAM;
+            } else {
+                assigneeType = Task.AssigneeType.INDIVIDUAL;
+            }
+        }
+        else {
+            // Default to some value if no RadioButton is selected
+            assigneeType = Task.AssigneeType.UNKNOWN;
+        }
 
         // Create and return a new Task object
-        return new Task(title, description, priority, status, deadline, assignee);
+        return new Task(title, description, priority, status, deadline, assignee, assigneeType);
     }
 
     public void initData(Task task) {
@@ -126,6 +153,18 @@ public class TaskDetailsController {
         PriorityComboBox.setValue(task.getPriority());
         StatusComboBox.setValue(task.getStatus());
         deadlinePicker.setValue(task.getDeadline());
+        assignText.setText(task.getAssignee());
+
+        // Determine and set the appropriate RadioButton based on the assignee type
+        Task.AssigneeType assigneeType = task.getAssigneeType();
+        if (assigneeType != null) {
+            if (assigneeType == Task.AssigneeType.TEAM) {
+                TeamRadioButton.setSelected(true);
+            } else {
+                IndividualRadioButton.setSelected(true);
+            }
+        }
+
     }
 
     public void setGridPaneBackground(Background background) {
