@@ -10,6 +10,9 @@ import javafx.scene.Parent;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.CheckBoxTableCell;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.input.ClipboardContent;
+import javafx.scene.input.Dragboard;
+import javafx.scene.input.TransferMode;
 import javafx.scene.layout.Background;
 import javafx.scene.layout.BackgroundFill;
 import javafx.scene.layout.CornerRadii;
@@ -285,6 +288,48 @@ public class HelloController {
                     row.setStyle("");
                 }
             });
+            return row;
+        });
+
+        taskTable.setRowFactory(tv -> {
+            TableRow<Task> row = new TableRow<>();
+
+            // This handler is triggered when a drag is detected on a row.
+            row.setOnDragDetected(event -> {
+                if (!row.isEmpty()) { //Make sure that row has values
+                    Integer index = row.getIndex(); //Get its index
+                    Dragboard dragboard = row.startDragAndDrop(TransferMode.MOVE); //Enable Move Transfer Mode
+                    ClipboardContent content = new ClipboardContent(); //Create Clipboard
+                    content.putString(String.valueOf(index)); //Copy content of dragged row(index)
+                    dragboard.setContent(content); //Copy the content to drag board
+                }
+            });
+
+            // This handler is triggered when a dragged item is dragged over a drop target
+            row.setOnDragOver(event -> {
+                //check if the  dragged row isn't dragged over itself and that it has value
+                if (event.getGestureSource() != row && event.getDragboard().hasString()) {
+                    event.acceptTransferModes(TransferMode.MOVE); //allow data to be moved
+                }
+                event.consume(); //end event
+            });
+
+            // This handler is triggered when a dragged item is dropped
+            row.setOnDragDropped(event -> {
+                Dragboard dragboard = event.getDragboard(); //Retrieve the data on the dragboard
+                if (dragboard.hasString()) { //Check it is not empty
+                    int draggedIndex = Integer.parseInt(dragboard.getString()); //get index of the row to be dropped
+                    Task task = taskTable.getItems().remove(draggedIndex); //remove the dragged row from its initial position
+                    //get the new index where the row is to be dropped
+                    // the dropped index takes the last index(.size()) in table in case of dropping it over empty cell
+                    // other wise it takes the index of the row
+                    int dropIndex = row.isEmpty() ? taskTable.getItems().size() : row.getIndex();
+                    taskTable.getItems().add(dropIndex, task);  //add the dropped row in ints new index
+                    event.setDropCompleted(true);
+                }
+                event.consume(); //end event
+            });
+
             return row;
         });
     }
