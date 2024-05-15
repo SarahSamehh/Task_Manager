@@ -193,6 +193,13 @@ public class HelloController {
                 }
             }
             taskTable.getItems().remove(taskIndex);
+        }else{
+            // Show an error message if no task is selected
+            Alert alert = new Alert(Alert.AlertType.ERROR);
+            alert.setTitle("Error");
+            alert.setHeaderText(null);
+            alert.setContentText("Please select a task to delete.");
+            alert.showAndWait();
         }
     }
 
