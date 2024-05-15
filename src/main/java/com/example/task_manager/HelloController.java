@@ -6,6 +6,7 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.geometry.Insets;
+import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.CheckBoxTableCell;
@@ -235,17 +236,27 @@ public class HelloController {
         Background background = new Background(backgroundFill);
         MainPane.setBackground(background);
         taskTable.setBackground(background);
-        setRowBackground(Color.GRAY);
+        setRowsBackground(Color.GRAY);
     }
 
         @FXML
         public void onLightModeButtonClick(ActionEvent event) throws IOException {
-            BackgroundFill backgroundFill = new BackgroundFill(Color.rgb(255, 255, 255), new CornerRadii(10), new Insets(10));
-            Background background = new Background(backgroundFill);
-            MainPane.setBackground(background);
-            taskTable.setBackground(background);
-            setRowBackground(Color.WHITE);
+            darkmode = false;
+            MainPane.setBackground(null);
+            taskTable.setBackground (null);
+            taskTable.setRowFactory(null);
+            setRowsBackground(Color.WHITE);
+
         }
+
+    private void setRowsBackground(Color color) {
+        for (Node node : taskTable.lookupAll(".table-row-cell")) {
+            if (node instanceof TableRow) {
+                TableRow<Task> row = (TableRow<Task>) node;
+                row.setStyle("-fx-background-color: " + toRGBCode(color) + ";");
+            }
+        }
+    }
 
 
 

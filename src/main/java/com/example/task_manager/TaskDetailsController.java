@@ -78,6 +78,9 @@ public class TaskDetailsController {
             Background background = new Background(backgroundFill);
             dialogPane.setBackground(background);
         }
+       else
+           dialogPane.setBackground(null);
+
 
         // Populating Status ComboBox
         ObservableList<Task.Status> statusOptions = FXCollections.observableArrayList(Task.Status.values());
