@@ -2,12 +2,21 @@ package com.example.task_manager;
 
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.geometry.Insets;
 import javafx.scene.control.*;
 import javafx.scene.layout.Background;
+import javafx.scene.layout.BackgroundFill;
+import javafx.scene.layout.CornerRadii;
 import javafx.scene.layout.GridPane;
+import javafx.scene.paint.Color;
+import com.example.task_manager.HelloController;
 
+import java.io.IOException;
 import java.time.LocalDate;
+
+//import static javax.swing.text.StyleConstants.setBackground;
 
 public class TaskDetailsController {
 
@@ -59,9 +68,17 @@ public class TaskDetailsController {
     @FXML
     private ToggleGroup g1;
 
+    public boolean darkmode;
+
 
     @FXML
-    public void initialize() {
+    public void initialize(boolean darkmode) {
+       if (darkmode){
+            BackgroundFill backgroundFill = new BackgroundFill(Color.rgb(0, 0, 0), new CornerRadii(10), new Insets(10));
+            Background background = new Background(backgroundFill);
+            dialogPane.setBackground(background);
+        }
+
         // Populating Status ComboBox
         ObservableList<Task.Status> statusOptions = FXCollections.observableArrayList(Task.Status.values());
         StatusComboBox.setItems(statusOptions);
@@ -73,49 +90,10 @@ public class TaskDetailsController {
         // Initialize ToggleGroup
         TeamRadioButton.setToggleGroup(g1);
         IndividualRadioButton.setToggleGroup(g1);
+
     }
 
-    public void setStatusComboBox(Task.Status status) {
-        StatusComboBox.setValue(status);
-    }
 
-    public void setPriorityComboBox(Task.Priority priority) {
-        PriorityComboBox.setValue(priority);
-    }
-
-    public void setDeadlinePicker(LocalDate date) {
-        deadlinePicker.setValue(date);
-    }
-
-    public void setDescriptionText(String text) {
-        descriptionText.setText(text);
-    }
-
-    public void setTitleText(String text) {
-        titleText.setText(text);
-    }
-
-    // Getters for UI components
-
-    public Task.Status getStatusComboBoxValue() {
-        return StatusComboBox.getValue();
-    }
-
-    public Task.Priority getPriorityComboBoxValue() {
-        return PriorityComboBox.getValue();
-    }
-
-    public LocalDate getDeadlinePickerValue() {
-        return deadlinePicker.getValue();
-    }
-
-    public String getDescriptionText() {
-        return descriptionText.getText();
-    }
-
-    public String getTitleText() {
-        return titleText.getText();
-    }
 
     // process the data..
     public Task getTask() {
@@ -167,7 +145,13 @@ public class TaskDetailsController {
 
     }
 
-    public void setGridPaneBackground(Background background) {
-        gridPane.setBackground(background);
+    @FXML
+    public void onDarkModeButtonClick(ActionEvent event) throws IOException {
+        BackgroundFill backgroundFill = new BackgroundFill(Color.rgb(0, 0, 0), new CornerRadii(10), new Insets(10));
+        Background background = new Background(backgroundFill);
+        dialogPane.setBackground(background);
+
     }
+
+
 }

@@ -55,6 +55,7 @@ public class HelloController {
     @FXML
     private Button clearAllButton;
 
+    public Boolean darkmode = false;
     @FXML
     void addButtonAction(ActionEvent eventt) {
         try {
@@ -62,6 +63,10 @@ public class HelloController {
             FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("task-details.fxml"));
             Parent root = fxmlLoader.load();
             TaskDetailsController controller = fxmlLoader.getController();
+
+
+            // Pass the dark mode state to the task controller
+            controller.initialize(darkmode);
 
             // Create a new dialog window
             Dialog<ButtonType> dialog = new Dialog<>();
@@ -225,6 +230,7 @@ public class HelloController {
 
     @FXML
     public void onDarkModeButtonClick(ActionEvent event) throws IOException {
+        darkmode = true;
         BackgroundFill backgroundFill = new BackgroundFill(Color.rgb(0, 0, 0), new CornerRadii(10), new Insets(10));
         Background background = new Background(backgroundFill);
         MainPane.setBackground(background);
