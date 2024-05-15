@@ -13,37 +13,37 @@
 <?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.text.Font?>
 
-<DialogPane fx:id="dialogPane" expanded="true" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="342.0" prefWidth="559.0" style="-fx-background-color: white;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.task_manager.TaskDetailsController">
+<DialogPane fx:id="dialogPane" expanded="true" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="342.0" prefWidth="559.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.task_manager.TaskDetailsController">
     <headerText>
     </headerText>
     <content>
         <GridPane fx:id="gridPane" hgap="10" prefHeight="310.0" prefWidth="550.0" vgap="10">
-            <Label fx:id="titleLabel" text="Title:" textFill="PURPLE" GridPane.columnIndex="0">
+            <Label fx:id="titleLabel" text="Title:" textFill="#682bd7" GridPane.columnIndex="0">
+            <font>
+               <Font name="System Bold" size="16.0" />
+            </font></Label>
+            <TextField fx:id="titleText" style="-fx-border-color: #a37cf0; -fx-border-radius: 5;" GridPane.columnIndex="1" />
+            <Label fx:id="descriptionLabel" text="Description:" textFill="#682bd7" GridPane.columnIndex="0" GridPane.rowIndex="1">
             <font>
                <Font name="System Bold" size="14.0" />
             </font></Label>
-            <TextField fx:id="titleText" style="-fx-border-color: ORCHID; -fx-border-radius: 5;" GridPane.columnIndex="1" />
-            <Label fx:id="descriptionLabel" text="Description:" textFill="PURPLE" GridPane.columnIndex="0" GridPane.rowIndex="1">
+            <Label fx:id="PriorityLabel" lineSpacing="2.0" text="Priority:" textFill="#682bd7" GridPane.rowIndex="5">
             <font>
                <Font name="System Bold" size="14.0" />
             </font></Label>
-            <Label fx:id="PriorityLabel" lineSpacing="2.0" text="Priority:" textFill="PURPLE" GridPane.rowIndex="5">
+            <ComboBox fx:id="PriorityComboBox" prefHeight="27.0" prefWidth="116.0" style="-fx-background-color: white; -fx-border-color: #a37cf0; -fx-border-radius: 5;" GridPane.columnIndex="1" GridPane.rowIndex="5" />
+            <TextArea fx:id="descriptionText" prefHeight="118.0" prefWidth="479.0" style="-fx-border-color: #a37cf0; -fx-border-radius: 5;" wrapText="true" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+            <Label fx:id="StatusLabel" lineSpacing="2.0" text="Status:" textFill="#682bd7" GridPane.rowIndex="8">
             <font>
                <Font name="System Bold" size="14.0" />
             </font></Label>
-            <ComboBox fx:id="PriorityComboBox" prefHeight="27.0" prefWidth="116.0" style="-fx-background-color: white; -fx-border-color: ORCHID; -fx-border-radius: 5;" GridPane.columnIndex="1" GridPane.rowIndex="5" />
-            <TextArea fx:id="descriptionText" prefHeight="118.0" prefWidth="479.0" style="-fx-border-color: oRCHID; -fx-border-radius: 5;" wrapText="true" GridPane.columnIndex="1" GridPane.rowIndex="1" />
-            <Label fx:id="StatusLabel" lineSpacing="2.0" text="Status:" textFill="PURPLE" GridPane.rowIndex="8">
+            <ComboBox fx:id="StatusComboBox" prefHeight="27.0" prefWidth="119.0" style="-fx-background-color: white; -fx-border-color: #a37cf0; -fx-border-radius: 5;" GridPane.columnIndex="1" GridPane.rowIndex="8" />
+            <Label fx:id="deadlineLabel" text="Deadline:" textFill="#682bd7" GridPane.rowIndex="10">
             <font>
                <Font name="System Bold" size="14.0" />
             </font></Label>
-            <ComboBox fx:id="StatusComboBox" prefHeight="27.0" prefWidth="119.0" style="-fx-background-color: white; -fx-border-color: ORCHID; -fx-border-radius: 5;" GridPane.columnIndex="1" GridPane.rowIndex="8" />
-            <Label fx:id="deadlineLabel" text="Deadline:" textFill="PURPLE" GridPane.rowIndex="10">
-            <font>
-               <Font name="System Bold" size="14.0" />
-            </font></Label>
-            <DatePicker fx:id="deadlinePicker" editable="false" prefHeight="26.0" prefWidth="122.0" style="-fx-background-color: ORCHID;" GridPane.columnIndex="1" GridPane.rowIndex="10" />
-         <Label text="Assignee" textFill="PURPLE" GridPane.rowIndex="12">
+            <DatePicker fx:id="deadlinePicker" editable="false" prefHeight="26.0" prefWidth="122.0" style="-fx-background-color: #a37cf0;" GridPane.columnIndex="1" GridPane.rowIndex="10" />
+         <Label text="Assignee" textFill="#682bd7" GridPane.rowIndex="12">
             <font>
                <Font name="System Bold" size="14.0" />
             </font>
@@ -54,12 +54,12 @@
             </toggleGroup>
          </RadioButton>
          <RadioButton fx:id="IndividualRadioButton" mnemonicParsing="false" text="Individual" toggleGroup="$g1" GridPane.columnIndex="1" GridPane.rowIndex="13" />
-         <Label prefHeight="45.0" prefWidth="117.0" text="Assignee Name :" textFill="PURPLE" GridPane.rowIndex="14">
+         <Label prefHeight="45.0" prefWidth="117.0" text="Assignee Name :" textFill="#682bd7" GridPane.rowIndex="14">
             <font>
                <Font name="System Bold" size="14.0" />
             </font>
          </Label>
-         <TextField fx:id="assignText" style="-fx-border-color: ORCHID; -fx-border-radius: 5;" GridPane.columnIndex="1" GridPane.rowIndex="14" />
+         <TextField fx:id="assignText" style="-fx-border-color: #a37cf0; -fx-border-radius: 5;" GridPane.columnIndex="1" GridPane.rowIndex="14" />
             <columnConstraints>
                 <ColumnConstraints maxWidth="137.39998779296874" minWidth="53.39998779296875" prefWidth="137.39998779296874" />
                 <ColumnConstraints maxWidth="474.4000122070313" minWidth="390.4000122070313" prefWidth="390.4000122070313" />
