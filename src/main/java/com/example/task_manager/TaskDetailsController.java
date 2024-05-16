@@ -5,6 +5,7 @@ import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.geometry.Insets;
+import javafx.scene.Node;
 import javafx.scene.control.*;
 import javafx.scene.layout.Background;
 import javafx.scene.layout.BackgroundFill;
@@ -77,6 +78,13 @@ public class TaskDetailsController {
             BackgroundFill backgroundFill = new BackgroundFill(Color.rgb(0, 0, 0), new CornerRadii(10), new Insets(10));
             Background background = new Background(backgroundFill);
             dialogPane.setBackground(background);
+
+           // Set label text color to white or any other suitable color for dark mode
+           for (Node node : gridPane.getChildren()) {
+               if (node instanceof Label || node instanceof RadioButton) {
+                   ((Labeled) node).setTextFill(Color.rgb(163, 124, 240));
+               }
+           }
         }
        else
            dialogPane.setBackground(null);
