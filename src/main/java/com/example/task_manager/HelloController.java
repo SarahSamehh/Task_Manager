@@ -288,6 +288,8 @@ public class HelloController {
     }
 
     public void initialize() {
+        taskTable.setItems(FXCollections.observableArrayList(tasks));
+
         ObservableList<Task.Status> statusOptions = FXCollections.observableArrayList(Task.Status.values());
         ChangeStatus.setItems(statusOptions);
 

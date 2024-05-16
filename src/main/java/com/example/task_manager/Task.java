@@ -1,9 +1,10 @@
 package com.example.task_manager;
 
+import java.io.Serializable;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 
-public class Task implements Comparable<Task> {
+public class Task implements Comparable<Task>, Serializable {
     private static int ID = 100;
     private String title;
     private String description;
