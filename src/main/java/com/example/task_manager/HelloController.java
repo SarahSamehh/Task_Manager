@@ -315,16 +315,29 @@ public class HelloController {
             }
         });
 
-        // Set up row factory to change background color based on task status
         taskTable.setRowFactory(tv -> {
             TableRow<Task> row = new TableRow<>();
             row.itemProperty().addListener((obs, oldTask, newTask) -> {
-                if (newTask != null && newTask.getStatus() == Task.Status.DONE) {
-                    row.setStyle("-fx-background-color: lightgreen;");
-                } else {
-                    row.setStyle("");
+                if (newTask != null) {
+                    switch (newTask.getStatus()) {
+                        case DONE:
+                            row.setStyle("-fx-background-color: lightgreen;");
+                            break;
+                        case IN_PROGRESS:
+                            row.setStyle("-fx-background-color: lightblue;");
+                            break;
+                        case TODO:
+                            row.setStyle("-fx-background-color: white;");
+                            break;
+                        // Add cases for other statuses as needed
+                        default:
+                            row.setStyle(""); // Default background color if status is not recognized
+                            break;
+                    }
                 }
             });
+
+
 
 
             // This handler is triggered when a drag is detected on a row.
