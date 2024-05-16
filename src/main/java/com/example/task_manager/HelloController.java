@@ -327,7 +327,7 @@ public class HelloController {
                             row.setStyle("-fx-background-color: lightblue;");
                             break;
                         case TODO:
-                            row.setStyle("-fx-background-color: white;");
+                            row.setStyle("");
                             break;
                         // Add cases for other statuses as needed
                         default:
