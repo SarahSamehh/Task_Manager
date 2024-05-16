@@ -6,6 +6,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.ButtonType;
+import javafx.scene.image.Image;
 import javafx.stage.Stage;
 import java.io.IOException;
 import java.util.concurrent.TimeUnit;
@@ -16,6 +17,8 @@ public class HelloApplication extends Application {
         FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("hello-view.fxml"));
         Scene scene = new Scene(fxmlLoader.load(), 1000, 700);
         stage.setTitle("Task Manager!");
+        Image iconImage = new Image(getClass().getResourceAsStream("icon.png"));
+        stage.getIcons().add(iconImage);
         stage.setScene(scene);
         stage.show();
         NotificationThread.startNotifications(10, TimeUnit.SECONDS);
