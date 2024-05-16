@@ -10,7 +10,7 @@
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.text.Font?>
 
-<Pane fx:id="MainPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="711.0" prefWidth="856.0" style="-fx-background-color: 9d9d9e;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.task_manager.HelloController">
+<Pane fx:id="MainPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="711.0" prefWidth="856.0" style="-fx-background-color: 9d9d9e;" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.task_manager.HelloController">
    <children>
       <Label alignment="CENTER" layoutX="21.0" layoutY="14.0" prefHeight="40.0" prefWidth="265.0" text="Task Manager" textAlignment="CENTER" textFill="#0e93b1" textOverrun="CENTER_ELLIPSIS">
          <font>
@@ -102,7 +102,7 @@
          </font>
       </Button>
       <TextField fx:id="addnotes" layoutX="314.0" layoutY="632.0" promptText="Notes.." />
-      <Label fx:id="StatusLabell" layoutX="21.0" layoutY="624.0" prefHeight="40.0" prefWidth="102.0" style="-fx-background-color: #682bd7;" text="      Status" textAlignment="CENTER" textFill="WHITE">
+      <Label fx:id="StatusLabell" layoutX="19.0" layoutY="624.0" prefHeight="40.0" prefWidth="112.0" style="-fx-background-color: #682bd7;" text="Update Status" textAlignment="CENTER" textFill="WHITE">
          <font>
             <Font size="18.0" />
          </font>
