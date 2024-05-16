@@ -148,13 +148,4 @@ public class TaskDetailsController {
 
     }
 
-    @FXML
-    public void onDarkModeButtonClick(ActionEvent event) throws IOException {
-        BackgroundFill backgroundFill = new BackgroundFill(Color.rgb(0, 0, 0), new CornerRadii(10), new Insets(10));
-        Background background = new Background(backgroundFill);
-        dialogPane.setBackground(background);
-
-    }
-
-
 }

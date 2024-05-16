@@ -219,6 +219,9 @@ public class HelloController {
             selectedTask.setNotes(addnotes.getText());
             taskTable.getItems().set(taskIndex, selectedTask);
 
+            // Clear the text box
+            addnotes.clear();
+
         } else {
             // Show an error message if no task is selected
             Alert alert = new Alert(Alert.AlertType.ERROR);

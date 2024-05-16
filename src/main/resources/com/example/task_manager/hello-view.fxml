@@ -75,7 +75,7 @@
             <Font size="18.0" />
          </font>
       </Button>
-      <Button fx:id="clearAllButton" layoutX="696.0" layoutY="542.0" mnemonicParsing="false" onAction="#clearAllButtonAction" prefHeight="40.0" prefWidth="125.0" style="-fx-background-color: #a37cf0;" text="Clear All">
+      <Button fx:id="clearAllButton" layoutX="696.0" layoutY="542.0" mnemonicParsing="false" onAction="#clearAllButtonAction" prefHeight="40.0" prefWidth="125.0" style="-fx-background-color: #d0c1ef;" text="Clear All">
          <font>
             <Font size="18.0" />
          </font>
@@ -86,12 +86,12 @@
          </font>
       </Button>
       <ComboBox fx:id="ChangeStatus" layoutX="14.0" layoutY="624.0" onAction="#onChangeStatusClick" prefHeight="40.0" prefWidth="138.0" style="-fx-background-color: #682bd7;" />
-      <Button fx:id="DarkMode" layoutX="696.0" layoutY="591.0" mnemonicParsing="false" onAction="#onDarkModeButtonClick" prefHeight="40.0" prefWidth="125.0" style="-fx-background-color: #a37cf0;" text="Dark Mode">
+      <Button fx:id="DarkMode" layoutX="696.0" layoutY="591.0" mnemonicParsing="false" onAction="#onDarkModeButtonClick" prefHeight="40.0" prefWidth="125.0" style="-fx-background-color: #d0c1ef;" text="Dark Mode">
          <font>
             <Font size="18.0" />
          </font>
       </Button>
-      <Button fx:id="LightMode" layoutX="696.0" layoutY="644.0" mnemonicParsing="false" onAction="#onLightModeButtonClick" prefHeight="40.0" prefWidth="125.0" style="-fx-background-color: #a37cf0;" text="Light Mode">
+      <Button fx:id="LightMode" layoutX="696.0" layoutY="644.0" mnemonicParsing="false" onAction="#onLightModeButtonClick" prefHeight="40.0" prefWidth="125.0" style="-fx-background-color: #d0c1ef;" text="Light Mode">
          <font>
             <Font size="18.0" />
          </font>
